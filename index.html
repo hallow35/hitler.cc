@@ -21,7 +21,7 @@ body{
 .header{
     width:100%;
     height:100px;
-    border-bottom:1px solid #800000;
+    border-bottom:1px solid #556b2f; /* Moss green */
 }
 
 .header img{
@@ -51,37 +51,19 @@ body{
 /* Top section */
 .top{
     display:flex;
-    justify-content:space-between;
+    justify-content:center;
     align-items:center;
     border-bottom:1px solid #b7c5d9;
     padding-bottom:8px;
     margin-bottom:10px;
 }
 
+/* Title */
 .title{
     font-size:24px;
-    color:#800000;
+    color:#556b2f; /* Moss green */
     font-weight:bold;
     text-align:center;
-    flex-grow:1;
-}
-
-.buttons{
-    display:flex;
-    gap:5px;
-}
-
-button{
-    background:#d6daf0;
-    border:1px solid #b7c5d9;
-    font-size:11px;
-    font-family:Verdana,sans-serif;
-    cursor:pointer;
-    padding:4px 10px;
-}
-
-button:hover{
-    background:#c8d0ea;
 }
 
 /* Subtitle */
@@ -126,32 +108,15 @@ a:visited{
     <div class="board">
 
         <div class="top">
-            <div class="buttons">
-                <button onclick="setLang('en')">English</button>
-                <button onclick="setLang('fr')">Français</button>
-            </div>
-
-            <div class="title" id="title"></div>
+            <div class="title">YOUR TITLE HERE</div>
         </div>
 
         <div class="subtitle">
             Archive • Information • Documentation
         </div>
 
-        <div class="content" id="content"></div>
-
-    </div>
-</div>
-
-<script>
-
-const translations = {
-
-    en: {
-        title: "YOUR ENGLISH TITLE",
-
-        content: `
-PUT YOUR ENGLISH TEXT HERE.
+        <div class="content">
+YOUR TEXT HERE.
 
 This area can contain thousands of words.
 
@@ -160,38 +125,10 @@ The text scrolls while the forum box remains centered.
 You can paste multiple pages worth of content.
 
 Lorem ipsum dolor sit amet...
-`
-    },
+        </div>
 
-    fr: {
-        title: "VOTRE TITRE FRANÇAIS",
-
-        content: `
-METTEZ VOTRE TEXTE FRANÇAIS ICI.
-
-Cette zone peut contenir des milliers de mots.
-
-Le texte défile tandis que la boîte reste centrée.
-
-Vous pouvez coller plusieurs pages de contenu.
-
-Lorem ipsum dolor sit amet...
-`
-    }
-
-};
-
-function setLang(lang){
-    document.getElementById("title").textContent =
-        translations[lang].title;
-
-    document.getElementById("content").textContent =
-        translations[lang].content;
-}
-
-setLang("en");
-
-</script>
+    </div>
+</div>
 
 </body>
 </html>
