@@ -1,285 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>hallow</title>
-
-<link rel="icon" href="pfp.png">
-
-<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<title>My Website</title>
 
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:"Roboto Mono",monospace;
-font-size:16px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-height:100vh;
-background:url("bg.png") center/cover no-repeat fixed;
-color:#e6e6e6;
-overflow:hidden;
+body {
+    background: white;
+    font-family: Arial, sans-serif;
 }
 
-#particles-js{
-position:fixed;
-width:100%;
-height:100%;
-top:0;
-left:0;
-z-index:-1;
+/* GREEN HEADER IMAGE */
+.header {
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
 }
 
-#cover{
-position:fixed;
-inset:0;
-background:black;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:4rem;
-cursor:pointer;
-z-index:9999;
+.header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.glass{
-backdrop-filter:blur(12px);
-background:rgba(255,255,255,0.06);
-border:1px solid rgba(255,255,255,0.15);
-border-radius:20px;
-box-shadow:0 10px 40px rgba(0,0,0,0.4);
+/* CENTERED CYAN BOX */
+.content-container {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
 }
 
-.card{
-width:420px;
-padding:40px;
-display:flex;
-flex-direction:column;
-gap:25px;
+.content-box {
+    width: min(800px, 90vw);
+    height: calc(100vh - 150px);
+    background: #26c6da;
+    border: 5px solid black;
+
+    display: flex;
+    flex-direction: column;
 }
 
-.profile{
-display:flex;
-align-items:center;
-gap:18px;
+/* TOP BAR */
+.top-bar {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.avatar{
-width:80px;
-height:80px;
-border-radius:14px;
-object-fit:cover;
-box-shadow:0 0 20px rgba(255,255,255,0.1);
+/* LANGUAGE BUTTONS */
+.language-buttons {
+    display: flex;
+    gap: 8px;
 }
 
-.name-row{
-display:flex;
-align-items:center;
-gap:6px;
+.language-buttons button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #005eff;
+    color: white;
+    font-weight: bold;
 }
 
-.name-row h1{
-font-weight:600;
+/* TITLE */
+#title {
+    color: gold;
+    font-size: 2rem;
+    text-align: center;
+    flex-grow: 1;
 }
 
-.badge{
-width:20px;
-height:20px;
+/* SCROLLABLE TEXT */
+.scroll-area {
+    flex: 1;
+    overflow-y: auto;
+    padding: 25px;
+    font-size: 1.1rem;
+    line-height: 1.8;
 }
-
-.subtitle{
-color:#bdbdbd;
-}
-
-.bio{
-color:#d6d6d6;
-line-height:1.6;
-}
-
-#clock{
-position:fixed;
-top:20px;
-right:20px;
-font-size:18px;
-}
-
-.audio-player{
-position:fixed;
-bottom:20px;
-right:20px;
-width:340px;
-padding:18px;
-display:flex;
-gap:14px;
-align-items:center;
-}
-
-.album{
-width:70px;
-height:70px;
-}
-
-.info{
-flex:1;
-font-size:17px;
-}
-
-.controls{
-margin-top:8px;
-}
-
-button{
-font-size:18px;
-}
-
-/* ABOUT BOX */
-.about{
-position:fixed;
-bottom:20px;
-left:20px;
-width:430px;
-padding:22px;
-line-height:1.6;
-}
-
-.about h2{
-margin-bottom:10px;
-}
-
 </style>
 </head>
 
 <body>
 
-<div id="cover">hitler.cc</div>
-
-<div id="particles-js"></div>
-
-<div id="clock"></div>
-
-<div class="min-h-screen flex items-center justify-center">
-
-<div class="glass card">
-
-<div class="profile">
-
-<img src="pfp.png" class="avatar">
-
-<div>
-
-<div class="name-row">
-<h1>hallow35</h1>
-<img src="badge1.png" class="badge">
-<img src="badge2.png" class="badge">
+<div class="header">
+    <img src="header.png" alt="Banner">
 </div>
 
-<div class="subtitle">Master Jedi</div>
+<div class="content-container">
+    <div class="content-box">
 
-</div>
+        <div class="top-bar">
+            <div class="language-buttons">
+                <button onclick="setLanguage('en')">EN</button>
+                <button onclick="setLanguage('fr')">FR</button>
+            </div>
 
-</div>
+            <h1 id="title"></h1>
 
-<p class="bio">
-My Discord -<br>
-<a href="https://discord.gg/6QwSj8ZYyc" target="_blank" style="color:#7aa2ff; text-decoration:underline;">
-https://discord.gg/6QwSj8ZYyc
-</a>
-</p>
+            <div style="width:80px;"></div>
+        </div>
 
-</div>
-</div>
+        <div class="scroll-area">
+            <p id="content"></p>
+        </div>
 
-<!-- ABOUT ME BOX -->
-<div class="about glass">
-  <p>
-    I'm 16 and from england. My coding language is JavaScript with no intention of learning more.<br>
-    my favourite films are 'Star Wars Episode III: Revenge of the Sith' and 'Lord of the Rings : Fellowship of the Ring'<br>
-    I play Minecraft and Roblox, and watch way too many films.<br>
-    My favourite books are 'The Hobbit' and 'I Have No Mouth, and I Must Scream'<br>
-    I have a vaste music taste despite what jack would say
-  </p>
-</div>
-
-<div class="audio-player glass">
-
-<div class="album">
-<img id="albumArt" src="album.png">
-</div>
-
-<div class="info">
-<div>Golden Brown</div>
-<div style="color:#aaa;">The Stranglers</div>
-
-<div class="controls">
-<button id="play">▶</button>
-</div>
-</div>
-
-<audio id="music">
-<source src="audio.mp3" type="audio/mp3">
-</audio>
-
+    </div>
 </div>
 
 <script>
+const translations = {
+    en: {
+        title: "YOUR ENGLISH TITLE",
 
-const cover=document.getElementById("cover")
-const audio=document.getElementById("music")
-const play=document.getElementById("play")
-const album=document.getElementById("albumArt")
+        content: `
+PASTE YOUR LONG ENGLISH TEXT HERE.
 
-cover.onclick=()=>{
-cover.style.opacity=0
-setTimeout(()=>cover.remove(),500)
+You can make this as long as you want.
 
-audio.play()
-album.style.animationPlayState="running"
-play.textContent="⏸"
+The content area will automatically become scrollable when the text exceeds the visible space.
+
+Add multiple paragraphs if desired.
+`
+    },
+
+    fr: {
+        title: "VOTRE TITRE FRANÇAIS",
+
+        content: `
+COLLEZ VOTRE LONG TEXTE FRANÇAIS ICI.
+
+La zone de contenu défilera automatiquement lorsque le texte est plus long que l'espace disponible.
+
+Vous pouvez écrire plusieurs paragraphes.
+`
+    }
+};
+
+function setLanguage(lang) {
+    document.getElementById("title").textContent =
+        translations[lang].title;
+
+    document.getElementById("content").textContent =
+        translations[lang].content;
 }
 
-play.onclick=()=>{
-if(audio.paused){
-audio.play()
-play.textContent="⏸"
-album.style.animationPlayState="running"
-}else{
-audio.pause()
-play.textContent="▶"
-album.style.animationPlayState="paused"
-}
-}
-
-function updateClock(){
-document.getElementById("clock").innerText=new Date().toLocaleTimeString()
-}
-
-setInterval(updateClock,1000)
-updateClock()
-
-particlesJS("particles-js",{
-particles:{
-number:{value:20},
-color:{value:"#ffffff"},
-shape:{type:"circle"},
-opacity:{value:0.2},
-size:{value:3},
-move:{speed:0.8}
-}
-})
-
+setLanguage('en');
 </script>
 
 </body>
