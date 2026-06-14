@@ -1,194 +1,103 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Board</title>
-
-<style>
 body{
     margin:0;
-    background:#ffffee;
+    background:#efefef;
     font-family:Verdana,Arial,sans-serif;
-    color:#000;
     overflow:hidden;
 }
 
-/* Header image */
+/* BIG HEADER */
 .header{
     width:100%;
-    height:100px;
-    border-bottom:1px solid #800000;
+    height:180px; /* much larger */
+    border-bottom:1px solid #7d3f3f;
+    margin:0;
 }
 
 .header img{
     width:100%;
     height:100%;
     object-fit:cover;
+    display:block;
 }
 
-/* Main layout */
+/* NO GAP */
 .main{
+    height:calc(100vh - 180px);
+    margin:0;
+    padding:0;
     display:flex;
     justify-content:center;
-    padding:10px;
-    height:calc(100vh - 120px);
 }
 
-/* Board */
+/* FORUM BODY */
 .board{
-    width:min(900px,90vw);
-    background:#f0e0d6;
-    border:1px solid #b7c5d9;
-    padding:10px;
+    width:1000px;
+    max-width:100%;
+    background:#f6f6f6;
+    border-left:1px solid #b6b6b6;
+    border-right:1px solid #b6b6b6;
+    border-bottom:1px solid #b6b6b6;
     display:flex;
     flex-direction:column;
 }
 
-/* Top section */
+/* RED NAVBAR */
 .top{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    border-bottom:1px solid #b7c5d9;
-    padding-bottom:8px;
-    margin-bottom:10px;
+    background:linear-gradient(#b96c6c,#944545);
+    border-bottom:1px solid #6d2e2e;
+    padding:4px 8px;
+    min-height:28px;
 }
 
-.title{
-    font-size:24px;
-    color:#800000;
-    font-weight:bold;
-    text-align:center;
-    flex-grow:1;
-}
-
-.buttons{
-    display:flex;
-    gap:5px;
-}
-
+/* LANGUAGE BUTTONS */
 button{
-    background:#d6daf0;
-    border:1px solid #b7c5d9;
+    background:#d8d8d8;
+    border:1px solid #7c7c7c;
+    padding:2px 8px;
     font-size:11px;
-    font-family:Verdana,sans-serif;
-    cursor:pointer;
-    padding:4px 10px;
+    font-family:Verdana;
+    border-radius:0;
 }
 
-button:hover{
-    background:#c8d0ea;
-}
-
-/* Subtitle */
-.subtitle{
+/* TITLE BAR */
+.title{
     text-align:center;
-    color:#707070;
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    line-height:24px;
+}
+
+/* SECOND HEADER BAR */
+.subtitle{
+    background:#e4d1d1;
+    border-top:1px solid #d5a9a9;
+    border-bottom:1px solid #c9b3b3;
+    color:#6b3333;
     font-size:11px;
-    margin-bottom:10px;
+    padding:4px 8px;
+    text-align:center;
 }
 
-/* Scrollable content */
+/* POST AREA */
 .content{
-    background:#f7f1e7;
-    border:1px solid #d9bfb7;
-    padding:15px;
-    overflow-y:auto;
     flex-grow:1;
-    line-height:1.6;
-    white-space:pre-wrap;
-    font-size:13px;
+    overflow-y:auto;
+    background:#fafafa;
+    padding:20px;
+    line-height:1.5;
+    font-size:12px;
+    border-top:1px solid #d4d4d4;
 }
 
-/* Old-school links */
-a{
-    color:#0000EE;
-    text-decoration:underline;
+/* FORUM POST LOOK */
+.content::before{
+    content:"Forum Post";
+    display:block;
+    background:linear-gradient(#b96c6c,#944545);
+    color:white;
+    font-weight:bold;
+    padding:6px;
+    margin:-20px -20px 15px -20px;
+    border-bottom:1px solid #6d2e2e;
 }
-
-a:visited{
-    color:#551A8B;
-}
-</style>
-</head>
-
-<body>
-
-<div class="header">
-    <img src="header.png" alt="Header">
-</div>
-
-<div class="main">
-    <div class="board">
-
-        <div class="top">
-            <div class="buttons">
-                <button onclick="setLang('en')">English</button>
-                <button onclick="setLang('fr')">Français</button>
-            </div>
-
-            <div class="title" id="title"></div>
-        </div>
-
-        <div class="subtitle">
-            Archive • Information • Documentation
-        </div>
-
-        <div class="content" id="content"></div>
-
-    </div>
-</div>
-
-<script>
-
-const translations = {
-
-    en: {
-        title: "YOUR ENGLISH TITLE",
-
-        content: `
-PUT YOUR ENGLISH TEXT HERE.
-
-This area can contain thousands of words.
-
-The text scrolls while the forum box remains centered.
-
-You can paste multiple pages worth of content.
-
-Lorem ipsum dolor sit amet...
-`
-    },
-
-    fr: {
-        title: "VOTRE TITRE FRANÇAIS",
-
-        content: `
-METTEZ VOTRE TEXTE FRANÇAIS ICI.
-
-Cette zone peut contenir des milliers de mots.
-
-Le texte défile tandis que la boîte reste centrée.
-
-Vous pouvez coller plusieurs pages de contenu.
-
-Lorem ipsum dolor sit amet...
-`
-    }
-
-};
-
-function setLang(lang){
-    document.getElementById("title").textContent =
-        translations[lang].title;
-
-    document.getElementById("content").textContent =
-        translations[lang].content;
-}
-
-setLang("en");
-
-</script>
-
-</body>
-</html>
