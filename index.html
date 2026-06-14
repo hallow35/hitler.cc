@@ -3,30 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Site</title>
+<title>My Board</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
 body{
-    background:white;
-    font-family:Arial, sans-serif;
-    height:100vh;
-    display:flex;
-    flex-direction:column;
+    margin:0;
+    background:#ffffee;
+    font-family:Verdana,Arial,sans-serif;
+    color:#000;
     overflow:hidden;
 }
 
-/* Green image area */
+/* Header image */
 .header{
     width:100%;
-    height:80px;
-    overflow:hidden;
-    border-bottom:4px solid black;
+    height:100px;
+    border-bottom:1px solid #800000;
 }
 
 .header img{
@@ -35,66 +27,92 @@ body{
     object-fit:cover;
 }
 
-/* Center area */
+/* Main layout */
 .main{
-    flex:1;
     display:flex;
     justify-content:center;
-    align-items:flex-start;
-    padding-top:10px;
+    padding:10px;
+    height:calc(100vh - 120px);
 }
 
-/* Cyan box */
-.content-box{
-    width:min(800px, 90vw);
-    height:calc(100vh - 110px);
-    background:#1dc0f0;
-    border:6px solid black;
-    overflow-y:auto;
-    padding:20px;
+/* Board */
+.board{
+    width:min(900px,90vw);
+    background:#f0e0d6;
+    border:1px solid #b7c5d9;
+    padding:10px;
+    display:flex;
+    flex-direction:column;
 }
 
-/* Top row */
-.topbar{
+/* Top section */
+.top{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:30px;
-}
-
-.lang-buttons{
-    display:flex;
-    gap:10px;
-}
-
-.lang-buttons button{
-    background:#004cff;
-    color:white;
-    border:none;
-    padding:8px 18px;
-    border-radius:20px;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-.lang-buttons button:hover{
-    opacity:0.9;
+    border-bottom:1px solid #b7c5d9;
+    padding-bottom:8px;
+    margin-bottom:10px;
 }
 
 .title{
-    font-size:2rem;
+    font-size:24px;
+    color:#800000;
     font-weight:bold;
-    color:#ffcc00;
+    text-align:center;
+    flex-grow:1;
 }
 
-/* Text */
+.buttons{
+    display:flex;
+    gap:5px;
+}
+
+button{
+    background:#d6daf0;
+    border:1px solid #b7c5d9;
+    font-size:11px;
+    font-family:Verdana,sans-serif;
+    cursor:pointer;
+    padding:4px 10px;
+}
+
+button:hover{
+    background:#c8d0ea;
+}
+
+/* Subtitle */
+.subtitle{
+    text-align:center;
+    color:#707070;
+    font-size:11px;
+    margin-bottom:10px;
+}
+
+/* Scrollable content */
 .content{
-    font-size:1.1rem;
-    line-height:1.8;
+    background:#f7f1e7;
+    border:1px solid #d9bfb7;
+    padding:15px;
+    overflow-y:auto;
+    flex-grow:1;
+    line-height:1.6;
     white-space:pre-wrap;
+    font-size:13px;
+}
+
+/* Old-school links */
+a{
+    color:#0000EE;
+    text-decoration:underline;
+}
+
+a:visited{
+    color:#551A8B;
 }
 </style>
 </head>
+
 <body>
 
 <div class="header">
@@ -102,15 +120,19 @@ body{
 </div>
 
 <div class="main">
-    <div class="content-box">
+    <div class="board">
 
-        <div class="topbar">
-            <div class="lang-buttons">
-                <button onclick="setLanguage('en')">English</button>
-                <button onclick="setLanguage('fr')">Français</button>
+        <div class="top">
+            <div class="buttons">
+                <button onclick="setLang('en')">English</button>
+                <button onclick="setLang('fr')">Français</button>
             </div>
 
             <div class="title" id="title"></div>
+        </div>
+
+        <div class="subtitle">
+            Archive • Information • Documentation
         </div>
 
         <div class="content" id="content"></div>
@@ -119,35 +141,44 @@ body{
 </div>
 
 <script>
+
 const translations = {
+
     en: {
-        title: "YOUR TITLE HERE",
+        title: "YOUR ENGLISH TITLE",
+
         content: `
-Paste your English text here.
+PUT YOUR ENGLISH TEXT HERE.
 
-This can be extremely long.
+This area can contain thousands of words.
 
-The cyan box will scroll internally while remaining centered.
+The text scrolls while the forum box remains centered.
 
-Add as many paragraphs as you want.
+You can paste multiple pages worth of content.
+
+Lorem ipsum dolor sit amet...
 `
     },
 
     fr: {
-        title: "VOTRE TITRE ICI",
+        title: "VOTRE TITRE FRANÇAIS",
+
         content: `
-Collez votre texte français ici.
+METTEZ VOTRE TEXTE FRANÇAIS ICI.
 
-Le texte peut être très long.
+Cette zone peut contenir des milliers de mots.
 
-La boîte bleue restera centrée pendant le défilement.
+Le texte défile tandis que la boîte reste centrée.
 
-Ajoutez autant de paragraphes que vous voulez.
+Vous pouvez coller plusieurs pages de contenu.
+
+Lorem ipsum dolor sit amet...
 `
     }
+
 };
 
-function setLanguage(lang){
+function setLang(lang){
     document.getElementById("title").textContent =
         translations[lang].title;
 
@@ -155,7 +186,8 @@ function setLanguage(lang){
         translations[lang].content;
 }
 
-setLanguage("en");
+setLang("en");
+
 </script>
 
 </body>
