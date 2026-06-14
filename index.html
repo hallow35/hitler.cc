@@ -3,116 +3,117 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Website</title>
+<title>My Site</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-    background: white;
-    font-family: Arial, sans-serif;
+body{
+    background:white;
+    font-family:Arial, sans-serif;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
 }
 
-/* GREEN HEADER IMAGE */
-.header {
-    width: 100%;
-    height: 120px;
-    overflow: hidden;
+/* Green image area */
+.header{
+    width:100%;
+    height:80px;
+    overflow:hidden;
+    border-bottom:4px solid black;
 }
 
-.header img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.header img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
-/* CENTERED CYAN BOX */
-.content-container {
-    display: flex;
-    justify-content: center;
-    padding: 10px 0;
+/* Center area */
+.main{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    padding-top:10px;
 }
 
-.content-box {
-    width: min(800px, 90vw);
-    height: calc(100vh - 150px);
-    background: #26c6da;
-    border: 5px solid black;
-
-    display: flex;
-    flex-direction: column;
+/* Cyan box */
+.content-box{
+    width:min(800px, 90vw);
+    height:calc(100vh - 110px);
+    background:#1dc0f0;
+    border:6px solid black;
+    overflow-y:auto;
+    padding:20px;
 }
 
-/* TOP BAR */
-.top-bar {
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* Top row */
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
 }
 
-/* LANGUAGE BUTTONS */
-.language-buttons {
-    display: flex;
-    gap: 8px;
+.lang-buttons{
+    display:flex;
+    gap:10px;
 }
 
-.language-buttons button {
-    padding: 6px 12px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background: #005eff;
-    color: white;
-    font-weight: bold;
+.lang-buttons button{
+    background:#004cff;
+    color:white;
+    border:none;
+    padding:8px 18px;
+    border-radius:20px;
+    cursor:pointer;
+    font-weight:bold;
 }
 
-/* TITLE */
-#title {
-    color: gold;
-    font-size: 2rem;
-    text-align: center;
-    flex-grow: 1;
+.lang-buttons button:hover{
+    opacity:0.9;
 }
 
-/* SCROLLABLE TEXT */
-.scroll-area {
-    flex: 1;
-    overflow-y: auto;
-    padding: 25px;
-    font-size: 1.1rem;
-    line-height: 1.8;
+.title{
+    font-size:2rem;
+    font-weight:bold;
+    color:#ffcc00;
+}
+
+/* Text */
+.content{
+    font-size:1.1rem;
+    line-height:1.8;
+    white-space:pre-wrap;
 }
 </style>
 </head>
-
 <body>
 
 <div class="header">
-    <img src="header.png" alt="Banner">
+    <img src="header.png" alt="Header">
 </div>
 
-<div class="content-container">
+<div class="main">
     <div class="content-box">
 
-        <div class="top-bar">
-            <div class="language-buttons">
-                <button onclick="setLanguage('en')">EN</button>
-                <button onclick="setLanguage('fr')">FR</button>
+        <div class="topbar">
+            <div class="lang-buttons">
+                <button onclick="setLanguage('en')">English</button>
+                <button onclick="setLanguage('fr')">Français</button>
             </div>
 
-            <h1 id="title"></h1>
-
-            <div style="width:80px;"></div>
+            <div class="title" id="title"></div>
         </div>
 
-        <div class="scroll-area">
-            <p id="content"></p>
-        </div>
+        <div class="content" id="content"></div>
 
     </div>
 </div>
@@ -120,33 +121,33 @@ body {
 <script>
 const translations = {
     en: {
-        title: "YOUR ENGLISH TITLE",
-
+        title: "YOUR TITLE HERE",
         content: `
-PASTE YOUR LONG ENGLISH TEXT HERE.
+Paste your English text here.
 
-You can make this as long as you want.
+This can be extremely long.
 
-The content area will automatically become scrollable when the text exceeds the visible space.
+The cyan box will scroll internally while remaining centered.
 
-Add multiple paragraphs if desired.
+Add as many paragraphs as you want.
 `
     },
 
     fr: {
-        title: "VOTRE TITRE FRANÇAIS",
-
+        title: "VOTRE TITRE ICI",
         content: `
-COLLEZ VOTRE LONG TEXTE FRANÇAIS ICI.
+Collez votre texte français ici.
 
-La zone de contenu défilera automatiquement lorsque le texte est plus long que l'espace disponible.
+Le texte peut être très long.
 
-Vous pouvez écrire plusieurs paragraphes.
+La boîte bleue restera centrée pendant le défilement.
+
+Ajoutez autant de paragraphes que vous voulez.
 `
     }
 };
 
-function setLanguage(lang) {
+function setLanguage(lang){
     document.getElementById("title").textContent =
         translations[lang].title;
 
@@ -154,7 +155,7 @@ function setLanguage(lang) {
         translations[lang].content;
 }
 
-setLanguage('en');
+setLanguage("en");
 </script>
 
 </body>
