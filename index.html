@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TTRA</title>
+<title>Eight 8</title>
 <link rel="icon" href="./favicon.ico" sizes="any">
 <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
 <link rel="apple-touch-icon" href="./favicon.ico">
@@ -200,6 +200,8 @@ body{
     color:#222;
 }
 
+
+
 a{color:#333;text-decoration:underline;}
 a:visited{color:#555;}
 </style>
@@ -224,7 +226,7 @@ a:visited{color:#555;}
     <!-- CENTRE BOARD -->
     <div class="board">
         <div class="top">
-            <div class="title">The Third Reich Archive — hallow35</div>
+            <div class="title">Eight 8 — hallow35</div>
         </div>
         <div class="subtitle">National Socialism &bull; Historical Information &bull; Documentation</div>
 
@@ -257,9 +259,13 @@ a:visited{color:#555;}
 
         <!-- PERSON CONTENT (hidden by default) -->
         <div class="content" id="person-content" style="display:none;"></div>
+        <!-- PROPAGANDA CONTENT (hidden by default) -->
+        <div class="content" id="prop-content" style="display:none;"></div>
+        <!-- SYMBOL CONTENT (hidden by default) -->
+        <div class="content" id="sym-content" style="display:none;"></div>
     </div>
 
-    <!-- RIGHT PANEL -->
+    <!-- RIGHT PANEL: PEOPLE -->
     <div class="right-panel">
         <div class="leader-card" onclick="showPerson('hitler')">
             <img src="hitler.jpg" alt="Adolf Hitler">
@@ -292,6 +298,38 @@ a:visited{color:#555;}
         <div class="leader-card" onclick="showPerson('speer')">
             <img src="speer.jpg" alt="Albert Speer">
             <div class="leader-name">Albert Speer</div>
+        </div>
+
+        <!-- PROPAGANDA DIVIDER -->
+        <div style="width:100%;border-top:1px solid #bbb;margin:4px 0;font-size:10px;font-weight:bold;color:#555;text-align:center;padding-top:6px;text-transform:uppercase;letter-spacing:1px;">Propaganda</div>
+
+        <div class="leader-card" onclick="showProp('jewish')" style="width:100%;display:flex;align-items:center;gap:8px;padding:7px;box-sizing:border-box;">
+            <img src="jewish1.jpg" alt="Anti-Jewish" style="width:48px;height:48px;object-fit:cover;border:1px solid #ccc;flex-shrink:0;">
+            <div class="leader-name" style="text-align:left;font-size:11px;">Anti-Jewish<br>Propaganda</div>
+        </div>
+        <div class="leader-card" onclick="showProp('communist')" style="width:100%;display:flex;align-items:center;gap:8px;padding:7px;box-sizing:border-box;">
+            <img src="communist1.jpg" alt="Anti-Communist" style="width:48px;height:48px;object-fit:cover;border:1px solid #ccc;flex-shrink:0;">
+            <div class="leader-name" style="text-align:left;font-size:11px;">Anti-Communist<br>Propaganda</div>
+        </div>
+        <div class="leader-card" onclick="showProp('nationalist')" style="width:100%;display:flex;align-items:center;gap:8px;padding:7px;box-sizing:border-box;">
+            <img src="nationalist1.jpg" alt="Nationalist" style="width:48px;height:48px;object-fit:cover;border:1px solid #ccc;flex-shrink:0;">
+            <div class="leader-name" style="text-align:left;font-size:11px;">Nationalist<br>Propaganda</div>
+        </div>
+
+        <!-- SYMBOLS DIVIDER -->
+        <div style="width:100%;border-top:1px solid #bbb;margin:4px 0;font-size:10px;font-weight:bold;color:#555;text-align:center;padding-top:6px;text-transform:uppercase;letter-spacing:1px;">Symbols</div>
+
+        <div class="leader-card" onclick="showSymbol('swastika')" style="width:100%;display:flex;align-items:center;gap:8px;padding:7px;box-sizing:border-box;">
+            <img src="swastika.png" alt="Swastika" style="width:48px;height:48px;object-fit:cover;border:1px solid #ccc;flex-shrink:0;">
+            <div class="leader-name" style="text-align:left;font-size:11px;">The Swastika</div>
+        </div>
+        <div class="leader-card" onclick="showSymbol('ss')" style="width:100%;display:flex;align-items:center;gap:8px;padding:7px;box-sizing:border-box;">
+            <img src="ss_logo.png" alt="SS Logo" style="width:48px;height:48px;object-fit:cover;border:1px solid #ccc;flex-shrink:0;">
+            <div class="leader-name" style="text-align:left;font-size:11px;">The SS Insignia</div>
+        </div>
+        <div class="leader-card" onclick="showSymbol('deathhead')" style="width:100%;display:flex;align-items:center;gap:8px;padding:7px;box-sizing:border-box;">
+            <img src="deathhead.png" alt="Death's Head" style="width:48px;height:48px;object-fit:cover;border:1px solid #ccc;flex-shrink:0;">
+            <div class="leader-name" style="text-align:left;font-size:11px;">The Death's Head</div>
         </div>
     </div>
 
@@ -493,9 +531,65 @@ const people = {
     }
 };
 
+const propaganda = {
+    jewish: {
+        title: "Anti-Jewish Propaganda",
+        images: ["jewish1.jpg","jewish2.jpg","jewish3.jpg"],
+        content: `
+            <h2>Anti-Jewish Propaganda in Nazi Germany</h2>
+            <p>Anti-Jewish propaganda was one of the most systematic and sustained elements of the Nazi regime's communications effort. From the moment Hitler came to power in 1933, the state mobilised every available medium — newspapers, posters, film, radio, school textbooks, and public exhibitions — to spread false and dehumanising portrayals of Jewish people. The goal was not merely to stir up hatred but to fundamentally reshape how the German public understood Jewish people, removing the moral barriers that would otherwise prevent ordinary citizens from accepting or participating in persecution.</p>
+            <p>The most prominent vehicle was the Nazi newspaper <em>Der Stürmer</em>, edited by Julius Streicher, which ran grotesque caricatures and fabricated stories about Jewish people week after week throughout the 1930s and into the war years. Its front pages were displayed publicly in glass cases on street corners across Germany, ensuring maximum exposure. The imagery it promoted — exaggerated physical features, sinister expressions, associations with greed and corruption — drew on centuries of European antisemitic iconography but amplified and industrialised it at unprecedented scale.</p>
+            <p>In 1940, the Nazi regime produced the film <em>Der ewige Jude</em> ("The Eternal Jew"), a pseudo-documentary that presented Jewish people as parasites and vermin while weaving together footage from Polish Jewish communities with commentary designed to disgust and dehumanise. The film was screened widely and represented one of the most extreme examples of state-produced hate propaganda in modern history.</p>
+            <p>Propaganda also targeted children from the earliest ages. School textbooks included racist pseudoscience presenting Jewish people as a biologically distinct and inferior "race." Books such as <em>Der Giftpilz</em> ("The Poisonous Mushroom"), published in 1938 and aimed at children, used simple imagery to portray Jewish people as dangerous predators to be avoided and feared.</p>
+            <p>Historians recognise this propaganda as having played a crucial role in enabling the Holocaust. By the time mass deportations and killings began, years of sustained dehumanisation had made it easier for bystanders to remain passive and for the broader population to disconnect from the reality of what was happening. The study of this propaganda is now central to Holocaust education — not to spread its content, but to understand how state-organised hatred is constructed and how ordinary societies can be manipulated into accepting atrocity.</p>
+        `
+    },
+    communist: {
+        title: "Anti-Communist Propaganda",
+        images: ["communist1.jpg","communist2.jpg","communist3.jpg"],
+        content: `
+            <h2>Anti-Communist Propaganda in Nazi Germany</h2>
+            <p>Anti-communism was one of the founding pillars of Nazi ideology and one of the regime's most consistent propaganda themes from the 1920s onward. The Nazi movement emerged in the turbulent aftermath of World War I, at a time when communist revolutions had swept Russia and attempted to take hold in parts of Germany itself. For Hitler and the early NSDAP, communism represented not merely a political rival but an existential civilisational enemy.</p>
+            <p>Nazi propaganda portrayed communism as an alien, Jewish-controlled ideology designed to destroy Germany and European civilisation. This framing — sometimes called "Judeo-Bolshevism" — deliberately fused antisemitism with anti-communism, claiming that Jewish intellectuals were the driving force behind Soviet communism. This was a fabrication, but it served to reinforce both strands of Nazi ideology simultaneously, presenting the Soviet Union as both a racial and political threat.</p>
+            <p>Posters, films, and speeches repeatedly depicted communist politicians and the Soviet leadership as brutal and barbaric. The 1933 Reichstag Fire — blamed by the Nazis on a Dutch communist — was exploited to justify the immediate suspension of civil liberties, enabling mass arrests of communist and socialist opponents across Germany.</p>
+            <p>When Germany invaded the Soviet Union in June 1941, anti-communist propaganda intensified dramatically. The war in the East was presented as a crusade for the survival of European civilisation against Bolshevik barbarism. This framing was used to justify deliberately not applying the Geneva Convention to Soviet prisoners of war, resulting in the deaths of approximately 3.3 million Soviet POWs through starvation, exposure, and execution.</p>
+            <p>Understanding this propaganda is essential to understanding how ordinary people can be brought to commit or tolerate mass violence through sustained ideological conditioning — a lesson that remains relevant to the study of political extremism today.</p>
+        `
+    },
+    nationalist: {
+        title: "Nationalist Propaganda",
+        images: ["nationalist1.jpg","nationalist2.jpg","nationalist3.jpg"],
+        content: `
+            <h2>Nationalist Propaganda in Nazi Germany</h2>
+            <p>Nationalist propaganda formed the emotional and symbolic core of the Nazi communications effort. While anti-Jewish and anti-communist propaganda focused on defining enemies, nationalist propaganda was designed to inspire — to create a powerful sense of German identity, destiny, and collective pride that would bind the population to the regime and motivate sacrifice in its service.</p>
+            <p>The central narrative was one of humiliation and rebirth. Germany's defeat in World War I and the Treaty of Versailles were presented as a national catastrophe inflicted by external enemies and internal traitors. The Nazi movement positioned itself as the vehicle for reversing this humiliation and restoring Germany to greatness — a message with genuine resonance among millions who had lived through defeat, economic chaos, and mass unemployment.</p>
+            <p>Joseph Goebbels' propaganda ministry produced some of the most visually striking political imagery of the 20th century. Leni Riefenstahl's 1935 film <em>Triumph of the Will</em>, documenting the 1934 Nuremberg Rally, combined innovative cinematography with choreographed mass spectacle to portray Nazi Germany as a nation unified and marching toward destiny. It remains one of the most studied works of political filmmaking ever made.</p>
+            <p>Posters celebrated the idealised German worker, farmer, soldier, and mother. Imagery drew heavily on Germanic mythology and nature — oak trees, eagles, mountains, and harvest scenes — evoking a romanticised vision of a deep-rooted civilisation. Youth was a particular focus: the Hitler Youth was depicted through propaganda as a purposeful generation building a new Germany.</p>
+            <p>The sheer scale and sophistication of Nazi nationalist propaganda set a template studied by political movements and scholars ever since. Its effectiveness lay in tapping into genuine emotions — pride, belonging, purpose — and channelling them in service of a violent political project. Understanding how this was achieved is central to media literacy and to studying how democratic societies can be undermined by authoritarian movements.</p>
+        `
+    }
+};
+
 function showHome() {
     document.getElementById('home-content').style.display = '';
     document.getElementById('person-content').style.display = 'none';
+    document.getElementById('prop-content').style.display = 'none';
+    document.getElementById('sym-content').style.display = 'none';
+}
+
+function showProp(key) {
+    const p = propaganda[key];
+    if (!p) return;
+    const imgs = p.images.map(src =>
+        '<div style="flex:1;min-width:0;text-align:center;"><img src="' + src + '" alt="' + p.title + '" style="max-width:100%;max-height:220px;object-fit:contain;border:1px solid #ccc;"></div>'
+    ).join('');
+    const pc = document.getElementById('prop-content');
+    pc.innerHTML = '<h2 style="margin-top:0;">' + p.title + '</h2><div style="display:flex;gap:12px;margin-bottom:18px;align-items:flex-start;">' + imgs + '</div>' + p.content;
+    document.getElementById('home-content').style.display = 'none';
+    document.getElementById('person-content').style.display = 'none';
+    document.getElementById('sym-content').style.display = 'none';
+    pc.style.display = '';
+    pc.scrollTop = 0;
 }
 
 function showPerson(key) {
@@ -521,8 +615,65 @@ function showPerson(key) {
         </div>
     `;
     document.getElementById('home-content').style.display = 'none';
+    document.getElementById('prop-content').style.display = 'none';
+    document.getElementById('sym-content').style.display = 'none';
     pc.style.display = '';
     pc.scrollTop = 0;
+}
+
+const symbols = {
+    swastika: {
+        title: "The Swastika (Hakenkreuz)",
+        img: "swastika.png",
+        content: `
+            <h2>Origins and Pre-Nazi History</h2>
+            <p>The swastika is one of the oldest symbols in human history, found across ancient cultures on nearly every inhabited continent. The word derives from the Sanskrit <em>svastika</em>, meaning "conducive to wellbeing." It appears in ancient Hindu, Buddhist, and Jain traditions, where it remains a sacred symbol of good fortune and prosperity to this day. Archaeological finds show it used in ancient Greece, Rome, the pre-Columbian Americas, and across prehistoric Europe. For thousands of years before the 20th century, it carried no association with hatred or violence.</p>
+            <p>In the late 19th and early 20th centuries, the swastika was adopted by various European nationalist and völkisch movements who associated it — incorrectly and without scholarly basis — with an imagined ancient "Aryan" race. By the time Hitler encountered it, the symbol was already circulating in German nationalist circles as a badge of ethnic identity.</p>
+            <h2>Adoption by the Nazi Party</h2>
+            <p>Hitler personally designed the Nazi flag in 1920, placing a black swastika (rotated 45 degrees) inside a white circle on a red background. In <em>Mein Kampf</em>, he described the symbolism: red for the social idea of the movement, white for nationalism, and the swastika for the "mission of the struggle for the victory of the Aryan man." The flag became the national flag of Germany in 1935 following the Nuremberg Laws.</p>
+            <p>The swastika was placed on military uniforms, government buildings, vehicles, medals, and all official documents. It became so thoroughly associated with the Nazi regime that its display in Germany and several other countries is now prohibited by law. The symbol appeared on the armbands of Nazi party members, on the tail fins of Luftwaffe aircraft, and on the standards carried at the massive Nuremberg rallies — making it one of the most recognisable and most reviled symbols of the 20th century.</p>
+            <h2>Legacy and Legal Status</h2>
+            <p>Following Germany's defeat in 1945, the swastika became internationally synonymous with Nazism, genocide, and fascist violence. Germany, Austria, and several other European countries banned its public display except for educational, artistic, and scholarly purposes. In religious contexts — particularly in Hindu and Buddhist communities — the symbol retains its ancient meaning entirely separate from its Nazi appropriation, a distinction that is important to recognise in historical and cultural education.</p>
+        `
+    },
+    ss: {
+        title: "The SS Insignia (Schutzstaffel)",
+        img: "ss_logo.png",
+        content: `
+            <h2>What the SS Was</h2>
+            <p>The Schutzstaffel — meaning "Protection Squadron" — began in 1925 as a small personal bodyguard unit for Adolf Hitler, subordinate to the larger SA (Sturmabteilung). Under Heinrich Himmler's leadership from 1929, it was transformed over the following decade into one of the most powerful and feared organisations in the Nazi state, ultimately encompassing the secret police (Gestapo), the SD (intelligence service), the Waffen-SS (combat troops), and the Death's Head units that administered the concentration camp system.</p>
+            <p>The SS operated as a state within the state, with its own laws, courts, and chain of command answerable only to Hitler. Membership required proof of "racial purity" going back several generations and adherence to a strict ideological code. The SS was considered the elite of the Nazi movement — the most ideologically committed, the most ruthless, and the most directly implicated in the Holocaust and other mass atrocities.</p>
+            <h2>The Insignia</h2>
+            <p>The SS logo consists of two stylised runic letters — the Sig rune (also called the Sowilo or "lightning bolt" rune) repeated twice. Runes were letters from the ancient Germanic and Norse alphabets, and the Nazi movement — particularly under Himmler, who was fascinated by Norse mythology and occultism — adopted several runic symbols to evoke a mythologised Germanic past. The double Sig rune was designed in 1932 by Walter Heck, a graphic designer, and was widely reproduced on SS uniforms, insignia, vehicles, and documents.</p>
+            <p>The insignia became directly associated with terror, mass murder, and the Holocaust. SS units were responsible for operating the extermination camps, carrying out the <em>Einsatzgruppen</em> massacres in Eastern Europe, running the Gestapo, and suppressing resistance movements across occupied Europe. After the war, the Nuremberg Tribunal declared the SS a criminal organisation. Display of the SS runes is banned in Germany and several other countries.</p>
+        `
+    },
+    deathhead: {
+        title: "The Death's Head (Totenkopf)",
+        img: "deathhead.png",
+        content: `
+            <h2>Historical Origins</h2>
+            <p>The skull-and-crossbones, or <em>Totenkopf</em> ("death's head"), has a long military history predating the Nazis by centuries. It was used as a symbol of elite or fearsome military units in Prussia from the 18th century — most notably by Hussar cavalry regiments under Frederick the Great — and was incorporated into the insignia of various German military formations during and after World War I. In this earlier context, it was intended to convey courage in the face of death and ferocity in battle, rather than any ideology of terror or genocide.</p>
+            <h2>Adoption by the SS</h2>
+            <p>The Totenkopf was adopted by the SS and worn as a cap badge from the organisation's earliest days. It became most closely associated with the SS-Totenkopfverbände — the Death's Head Units — which were the SS formations specifically tasked with guarding and administering the concentration camp system. These units were responsible for the day-to-day operation of the camps: enforcing brutal discipline, carrying out executions, and overseeing the conditions of deliberate starvation and forced labour that killed hundreds of thousands of prisoners.</p>
+            <p>The Death's Head Division was also a combat formation of the Waffen-SS that fought on the Eastern Front, where it was responsible for numerous documented war crimes and atrocities against Soviet civilians and prisoners of war.</p>
+            <h2>The Symbol's Significance</h2>
+            <p>Within the SS, the Totenkopf carried an explicit ideological meaning articulated by Himmler himself: SS members were to be willing to give and take death in the service of the Nazi racial state, without hesitation or mercy. This was not merely a symbol of bravery — it was an emblem of the dehumanisation of the SS's victims and the removal of normal moral constraints from its members.</p>
+            <p>After 1945, the Totenkopf became internationally associated with SS atrocities and the Holocaust. Like other SS symbols, its use in a neo-Nazi or white supremacist context is widely recognised as a hate symbol. It is distinguished from the broader skull-and-crossbones symbol used in other contexts (piracy, poison warnings, military units in other countries) by its specific SS design and its historical association with the concentration camp system.</p>
+        `
+    }
+};
+
+function showSymbol(key) {
+    const s = symbols[key];
+    if (!s) return;
+    const sc = document.getElementById('sym-content');
+    sc.innerHTML = '<div class="person-layout"><div class="person-img-col"><img src="' + s.img + '" alt="' + s.title + '" style="background:#222;padding:10px;"><div class="person-img-caption" style="margin-top:6px;"><strong>' + s.title + '</strong></div></div><div class="person-text-col"><h2 style="margin-top:0;">' + s.title + '</h2>' + s.content + '</div></div>';
+    document.getElementById('home-content').style.display = 'none';
+    document.getElementById('person-content').style.display = 'none';
+    document.getElementById('prop-content').style.display = 'none';
+    sc.style.display = '';
+    sc.scrollTop = 0;
 }
 </script>
 </body>
