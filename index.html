@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,9 +9,9 @@
 
 <link rel="icon" href="./favicon.ico" sizes="any">
 <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
-<link rel="apple-touch-icon" href="./favicon.ico">
 
 <style>
+
 body{
     margin:0;
     background:#eef2e3;
@@ -19,6 +20,7 @@ body{
     overflow:hidden;
 }
 
+/* Header */
 .header{
     width:100%;
     height:100px;
@@ -31,14 +33,17 @@ body{
     object-fit:cover;
 }
 
+/* Main Layout */
 .main{
     display:flex;
     justify-content:center;
+    align-items:flex-start;
+    gap:15px;
     padding:10px;
     height:calc(100vh - 120px);
 }
 
-/* board stays unchanged */
+/* Main Board */
 .board{
     width:min(900px,90vw);
     background:#e3ead7;
@@ -49,34 +54,38 @@ body{
     box-sizing:border-box;
 }
 
-/* ✅ NEW RIGHT PANEL */
-.right-panel{
-    width:220px;
-    margin-left:10px;
+/* Sidebar */
+.sidebar{
+    width:180px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+/* Leader Cards */
+.leader-card{
     background:#e3ead7;
     border:1px solid #7f8f6a;
-    padding:10px;
-    box-sizing:border-box;
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    align-content:flex-start;
-    overflow-y:auto;
-}
-
-/* ✅ NAME BOX STYLE */
-.leader-box{
-    width:100%;
-    background:#f4f7ee;
-    border:1px solid #a5b38a;
-    padding:10px;
+    padding:8px;
     text-align:center;
-    font-size:13px;
-    font-weight:bold;
-    color:#2f5d1d;
 }
 
-/* existing styles unchanged */
+.leader-card img{
+    width:100%;
+    height:120px;
+    object-fit:cover;
+    border:1px solid #a5b38a;
+    background:#d8dfcc;
+}
+
+.leader-name{
+    margin-top:6px;
+    font-size:12px;
+    font-weight:bold;
+    color:#556b2f;
+}
+
+/* Top */
 .top{
     display:flex;
     justify-content:center;
@@ -107,19 +116,36 @@ body{
     overflow-y:auto;
     flex-grow:1;
     line-height:1.6;
-    white-space:pre-wrap;
     font-size:13px;
     box-sizing:border-box;
 }
 
+.section-heading{
+    display:block;
+    font-size:16px;
+    font-weight:bold;
+    margin:20px 0 10px;
+}
+
 a{
     color:#2f5d1d;
-    text-decoration:underline;
 }
 
 a:visited{
     color:#4b5d35;
 }
+
+@media (max-width:1200px){
+
+    .sidebar{
+        display:none;
+    }
+
+    .board{
+        width:95vw;
+    }
+}
+
 </style>
 </head>
 
@@ -142,21 +168,148 @@ a:visited{
         </div>
 
         <div class="content">
-            <!-- YOUR CONTENT UNCHANGED -->
-            (all your text remains exactly the same)
+
+            <span class="section-heading">
+                National Socialist Party Ideology
+            </span>
+
+            <p>
+            Nazi ideology, as developed by the National Socialist German Workers’ Party under Adolf Hitler, was built around a set of interconnected beliefs that presented themselves as a worldview explaining Germany’s problems and offering “solutions.”
+            </p>
+
+            <p>
+            At the core was an extreme form of racial hierarchy. Nazis believed humanity was divided into “races,” which they claimed had different biological and cultural value.
+            </p>
+
+            <p>
+            Supporters of the ideology were taught that history was a struggle between races rather than classes, nations, or ideas.
+            </p>
+
+            <p>
+            Another key belief was Lebensraum (“living space”), which argued Germany required territorial expansion for resources and settlement.
+            </p>
+
+            <p>
+            Nazi ideology also rejected liberal democracy, parliamentary politics and communism.
+            </p>
+
+            <p>
+            Economically and socially, the ideology promoted a highly controlled society subordinating individual rights to the state.
+            </p>
+
+            <p>
+            After 1945, the ideology became widely condemned due to its role in war, persecution and genocide.
+            </p>
+
+            <span class="section-heading">
+                Key Figures in the Nazi Leadership
+            </span>
+
+            <p>
+            Adolf Hitler – Leader of Nazi Germany and head of the Nazi Party.
+            </p>
+
+            <p>
+            Joseph Goebbels – Minister of Propaganda.
+            </p>
+
+            <p>
+            Heinrich Himmler – Head of the SS.
+            </p>
+
+            <p>
+            Hermann Göring – Commander of the Luftwaffe and senior Nazi official.
+            </p>
+
+            <p>
+            Rudolf Hess – Deputy Führer until 1941.
+            </p>
+
+            <p>
+            Martin Bormann – Head of the Nazi Party Chancellery.
+            </p>
+
+            <p>
+            Albert Speer – Minister of Armaments and War Production.
+            </p>
+
+            <span class="section-heading">
+                Concentration Camps
+            </span>
+
+            <p>
+            Concentration camps were detention facilities established by the Nazi regime to imprison political opponents and persecuted groups.
+            </p>
+
+            <span class="section-heading">
+                Kristallnacht (1938)
+            </span>
+
+            <p>
+            Kristallnacht took place on 9–10 November 1938 and marked a major escalation in anti-Jewish persecution.
+            </p>
+
+            <span class="section-heading">
+                The Gestapo
+            </span>
+
+            <p>
+            The Gestapo was the secret state police of Nazi Germany and played a major role in suppressing opposition.
+            </p>
+
+            <span class="section-heading">
+                Hitler Youth (Hitlerjugend)
+            </span>
+
+            <p>
+            The Hitler Youth was a state youth organisation intended to indoctrinate young people into Nazi ideology.
+            </p>
+
         </div>
 
     </div>
 
-    <!-- ✅ NEW RIGHT SIDE AREA -->
-    <div class="right-panel">
-        <div class="leader-box">Adolf Hitler</div>
-        <div class="leader-box">Joseph Goebbels</div>
-        <div class="leader-box">Heinrich Himmler</div>
-        <div class="leader-box">Hermann Göring</div>
+    <div class="sidebar">
+
+        <div class="leader-card">
+            <img src="leaders/hitler.jpg" alt="Adolf Hitler">
+            <div class="leader-name">Adolf Hitler</div>
+        </div>
+
+        <div class="leader-card">
+            <img src="leaders/goebbels.jpg" alt="Joseph Goebbels">
+            <div class="leader-name">Joseph Goebbels</div>
+        </div>
+
+        <div class="leader-card">
+            <img src="leaders/goering.jpg" alt="Hermann Göring">
+            <div class="leader-name">Hermann Göring</div>
+        </div>
+
+        <div class="leader-card">
+            <img src="leaders/himmler.jpg" alt="Heinrich Himmler">
+            <div class="leader-name">Heinrich Himmler</div>
+        </div>
+
+        <div class="leader-card">
+            <img src="leaders/hess.jpg" alt="Rudolf Hess">
+            <div class="leader-name">Rudolf Hess</div>
+        </div>
+
+        <div class="leader-card">
+            <img src="leaders/bormann.jpg" alt="Martin Bormann">
+            <div class="leader-name">Martin Bormann</div>
+        </div>
+
+        <div class="leader-card">
+            <img src="leaders/speer.jpg" alt="Albert Speer">
+            <div class="leader-name">Albert Speer</div>
+        </div>
+
     </div>
 
 </div>
 
 </body>
 </html>
+```
