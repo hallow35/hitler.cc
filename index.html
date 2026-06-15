@@ -668,7 +668,7 @@ function showSymbol(key) {
     const s = symbols[key];
     if (!s) return;
     const sc = document.getElementById('sym-content');
-    sc.innerHTML = '<div class="person-layout"><div class="person-img-col"><img src="' + s.img + '" alt="' + s.title + '" style="background:#222;padding:10px;"><div class="person-img-caption" style="margin-top:6px;"><strong>' + s.title + '</strong></div></div><div class="person-text-col"><h2 style="margin-top:0;">' + s.title + '</h2>' + s.content + '</div></div>';
+    sc.innerHTML = '<div class="person-layout"><div class="person-img-col"><img src="' + s.img + '" alt="' + s.title + '"><div class="person-img-caption" style="margin-top:6px;"><strong>' + s.title + '</strong></div></div><div class="person-text-col"><h2 style="margin-top:0;">' + s.title + '</h2>' + s.content + '</div></div>';
     document.getElementById('home-content').style.display = 'none';
     document.getElementById('person-content').style.display = 'none';
     document.getElementById('prop-content').style.display = 'none';
