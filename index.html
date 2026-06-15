@@ -3,17 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Eight 8</title>
-
 <link rel="icon" href="./favicon.ico" sizes="any">
 <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
 <link rel="apple-touch-icon" href="./favicon.ico">
-
 <style>
+*{box-sizing:border-box;}
 body{
     margin:0;
-    background:#d0d0d0;
+    background:#ece9d8;
     font-family:Verdana,Arial,sans-serif;
     color:#111;
     overflow:hidden;
@@ -25,33 +23,76 @@ body{
     height:100px;
     border-bottom:2px solid #888;
 }
-
 .header img{
     width:100%;
     height:100%;
     object-fit:cover;
 }
 
-/* MAIN */
+/* MAIN LAYOUT */
 .main{
     display:flex;
-    justify-content:center;
     padding:10px;
+    gap:10px;
     height:calc(100vh - 120px);
 }
 
-/* BOARD */
+/* LEFT NAV PANEL */
+.left-nav{
+    width:120px;
+    flex-shrink:0;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.nav-btn{
+    background:#f0f0f0;
+    border:1px solid #aaa;
+    padding:10px 8px;
+    text-align:center;
+    font-family:Verdana,Arial,sans-serif;
+    font-size:12px;
+    font-weight:bold;
+    color:#222;
+    cursor:pointer;
+    position:relative;
+}
+.nav-btn:hover{
+    background:#e0e0e0;
+}
+
+/* Contact tooltip */
+.nav-btn .tooltip{
+    display:none;
+    position:absolute;
+    top:50%;
+    left:110%;
+    transform:translateY(-50%);
+    background:#222;
+    color:#fff;
+    font-size:11px;
+    font-weight:normal;
+    padding:5px 8px;
+    white-space:nowrap;
+    border:1px solid #555;
+    z-index:999;
+}
+.nav-btn:hover .tooltip{
+    display:block;
+}
+
+/* CENTRE BOARD */
 .board{
-    width:min(900px,90vw);
+    flex:1;
+    min-width:0;
     background:#f0f0f0;
     border:1px solid #aaa;
     padding:10px;
     display:flex;
     flex-direction:column;
-    box-sizing:border-box;
 }
 
-/* TOP */
 .top{
     display:flex;
     justify-content:center;
@@ -60,14 +101,12 @@ body{
     padding-bottom:8px;
     margin-bottom:10px;
 }
-
 .title{
-    font-size:24px;
+    font-size:22px;
     color:#222;
     font-weight:bold;
     text-align:center;
 }
-
 .subtitle{
     text-align:center;
     color:#555;
@@ -75,7 +114,7 @@ body{
     margin-bottom:10px;
 }
 
-/* CONTENT */
+/* CONTENT SCROLL AREA */
 .content{
     background:#fff;
     border:1px solid #ccc;
@@ -84,11 +123,8 @@ body{
     flex-grow:1;
     line-height:1.7;
     font-size:13px;
-    box-sizing:border-box;
 }
-
-/* Subheadings inside content */
-.content h2 {
+.content h2{
     font-size:14px;
     font-weight:bold;
     color:#111;
@@ -97,66 +133,76 @@ body{
     border-bottom:1px solid #ddd;
     padding-bottom:4px;
 }
+.content h2:first-child{margin-top:0;}
+.content p{margin:0 0 12px 0;}
 
-.content p {
-    margin:0 0 12px 0;
+/* PERSON PAGE LAYOUT inside .content */
+.person-layout{
+    display:flex;
+    gap:18px;
+    align-items:flex-start;
 }
-
-a{
-    color:#333;
-    text-decoration:underline;
+.person-img-col{
+    flex-shrink:0;
+    width:180px;
+    text-align:center;
 }
-
-a:visited{
+.person-img-col img{
+    width:100%;
+    border:1px solid #ccc;
+}
+.person-img-caption{
+    font-size:11px;
     color:#555;
+    margin-top:5px;
+}
+.person-text-col{
+    flex:1;
+    min-width:0;
 }
 
 /* RIGHT PANEL */
 .right-panel{
-    width:340px;
-    margin-left:10px;
+    width:280px;
+    flex-shrink:0;
     background:#f0f0f0;
     border:1px solid #aaa;
     padding:10px;
-    box-sizing:border-box;
-
     display:flex;
     flex-wrap:wrap;
-    gap:10px;
+    gap:8px;
     align-content:flex-start;
-
     overflow-y:auto;
 }
-
-/* 3 PER ROW */
 .leader-card{
-    width:calc(33.333% - 7px);
+    width:calc(33.333% - 6px);
     background:#fff;
     border:1px solid #ccc;
-    padding:6px;
+    padding:5px;
     text-align:center;
-    box-sizing:border-box;
+    cursor:pointer;
 }
-
-/* IMAGE */
+.leader-card:hover{
+    background:#e8e8e8;
+    border-color:#888;
+}
 .leader-card img{
     width:100%;
-    height:90px;
+    height:75px;
     object-fit:cover;
     border:1px solid #ccc;
 }
-
-/* NAME */
 .leader-name{
-    margin-top:5px;
-    font-size:11px;
+    margin-top:4px;
+    font-size:10px;
     font-weight:bold;
     color:#222;
 }
 
+a{color:#333;text-decoration:underline;}
+a:visited{color:#555;}
 </style>
 </head>
-
 <body>
 
 <div class="header">
@@ -165,139 +211,318 @@ a:visited{
 
 <div class="main">
 
-    <!-- LEFT BOARD -->
-    <div class="board">
+    <!-- LEFT NAV -->
+    <div class="left-nav">
+        <div class="nav-btn" onclick="showHome()">🏠 Home</div>
+        <div class="nav-btn">
+            ✉ Contact
+            <div class="tooltip">c@hitler.cc</div>
+        </div>
+    </div>
 
+    <!-- CENTRE BOARD -->
+    <div class="board">
         <div class="top">
             <div class="title">Eight 8 — hallow35</div>
         </div>
+        <div class="subtitle">National Socialism &bull; Historical Information &bull; Documentation</div>
 
-        <div class="subtitle">
-            National Socialism &bull; Historical Information &bull; Documentation
-        </div>
-
-        <div class="content">
+        <!-- HOME CONTENT -->
+        <div class="content" id="home-content">
 
             <h2>National Socialist Party Ideology</h2>
-
             <p>Nazi ideology, as developed by the National Socialist German Workers' Party (NSDAP) under Adolf Hitler during the 1920s and 1930s, presented itself as a total worldview — a complete explanation of politics, history, race, and national destiny. Understanding this ideology is essential for comprehending one of the most catastrophic periods in modern history and for recognising the warning signs of political extremism.</p>
-
-            <p>At the core of Nazi ideology was a pseudoscientific theory of racial hierarchy. The Nazis falsely claimed that humanity was divided into biologically distinct "races" of differing worth, placing so-called "Aryans" — broadly defined as Northern and Western Europeans — at the top. This had no basis in science, but was used to justify discrimination and persecution. Jewish people were particularly targeted: falsely portrayed not as a religious group but as a separate "race" that the Nazis claimed was responsible for Germany's defeat in World War I, economic instability, and broader social decline. These claims were fabrications used to scapegoat an entire community. Other groups — including Roma people, disabled individuals, Slavic peoples, Black Germans, and political opponents — were also dehumanised and persecuted under the same framework.</p>
-
-            <p>Nazi supporters were taught that history was a perpetual biological struggle between races, rather than a contest of ideas or nations. This framing was used to justify violent conflict as inevitable and even necessary. It removed the moral basis for peace, diplomacy, or cooperation across national lines.</p>
-
-            <p>A further central concept was <em>Lebensraum</em> ("living space"). The Nazis argued that Germany needed to expand its territory — particularly eastward into Eastern Europe and the Soviet Union — to secure land and resources. This was framed as a matter of national survival rather than conquest. In practice, it provided the ideological justification for aggressive military invasions, the mass displacement of civilian populations, and widespread atrocities across occupied territories during World War II.</p>
-
-            <p>The ideology also rejected liberal democracy, parliamentary government, and left-wing politics. Democracy was portrayed as weak and ineffective. The Nazi alternative was a system of total authority centred on the <em>Führerprinzip</em> — the idea that a single leader, Adolf Hitler, embodied the will of the nation and held absolute power. This structure dismantled existing legal and democratic institutions, concentrating control in the hands of the party.</p>
-
-            <p>Socially and economically, the Nazis promoted the concept of the <em>Volksgemeinschaft</em> ("national community") — a racially defined collective to which individual rights were subordinated. In theory this promised national unity; in practice it was enforced through exclusion, repression, and violence against those deemed to be outside the community.</p>
-
-            <p>These ideas were spread and reinforced through state control of the press, radio, film, education, and public events such as mass rallies. The ideology was presented as offering national renewal after Germany's defeat in World War I and the economic hardship of the 1920s, making it attractive to many who felt humiliated or left behind — despite the destructive reality it produced.</p>
-
-            <p>In practice, Nazi ideology led directly to the Holocaust — the systematic, state-organised murder of six million Jewish men, women, and children, alongside millions of others including Roma people, disabled individuals, political prisoners, and Soviet POWs. It triggered World War II in Europe, resulting in tens of millions of deaths and destruction on a vast scale. After Germany's defeat in 1945 and the full revelation of these crimes, Nazi ideology was condemned internationally and recognised as one of the most extreme examples of state-sponsored genocidal violence in recorded history.</p>
+            <p>At the core of Nazi ideology was a pseudoscientific theory of racial hierarchy. The Nazis falsely claimed that humanity was divided into biologically distinct "races" of differing worth, placing so-called "Aryans" — broadly defined as Northern and Western Europeans — at the top. This had no basis in science, but was used to justify discrimination and persecution. Jewish people were particularly targeted: falsely portrayed not as a religious group but as a separate "race" that the Nazis claimed was responsible for Germany's defeat in World War I, economic instability, and broader social decline. Other groups — including Roma people, disabled individuals, Slavic peoples, and political opponents — were also dehumanised and persecuted under the same framework.</p>
+            <p>A further central concept was <em>Lebensraum</em> ("living space"). The Nazis argued that Germany needed to expand its territory — particularly eastward into Eastern Europe and the Soviet Union — to secure land and resources. In practice, it provided the ideological justification for aggressive military invasions, the mass displacement of civilian populations, and widespread atrocities across occupied territories during World War II.</p>
+            <p>The ideology rejected liberal democracy and parliamentary government, replacing it with the <em>Führerprinzip</em> — absolute authority concentrated in a single leader. It promoted the <em>Volksgemeinschaft</em> ("national community"), a racially defined collective enforced through exclusion, repression, and violence. In practice, Nazi ideology led directly to the Holocaust — the systematic murder of six million Jews and millions of others — and triggered World War II, resulting in tens of millions of deaths. After 1945, it was condemned internationally as genocidal extremism.</p>
 
             <h2>Key Figures in the Nazi Leadership</h2>
-
-            <p>The Nazi state was dominated by a small group of senior officials who shared responsibility for its policies and crimes:</p>
-
-            <p><strong>Adolf Hitler</strong> — Founder and leader of the NSDAP, and dictator of Nazi Germany from 1933 until his death in 1945. He held ultimate authority over the state, military, and all major policy decisions, including those relating to racial persecution and warfare.</p>
-
-            <p><strong>Joseph Goebbels</strong> — Reich Minister of Propaganda. He oversaw the control of German media, film, radio, and public events, shaping public perception of the regime and spreading Nazi ideology throughout German society.</p>
-
-            <p><strong>Heinrich Himmler</strong> — Head of the SS (Schutzstaffel) and one of the chief architects of the concentration camp system. He played a central role in planning and implementing the Holocaust.</p>
-
-            <p><strong>Hermann Göring</strong> — One of the most senior figures in the Nazi hierarchy, commander of the Luftwaffe (German Air Force), and head of economic planning for wartime industrial production. He was also involved in the early establishment of the Gestapo.</p>
-
-            <p><strong>Rudolf Hess</strong> — Deputy Führer until 1941. He was closely involved in early party organisation and co-authored sections of <em>Mein Kampf</em> with Hitler. In 1941, he flew alone to Scotland in an unofficial attempt to negotiate peace with Britain, after which he was imprisoned for the remainder of the war.</p>
-
-            <p><strong>Reinhard Heydrich</strong> — Senior SS and police official who chaired the 1942 Wannsee Conference, at which Nazi officials coordinated the planning of the "Final Solution" — the systematic murder of European Jews. He was assassinated by Czech resistance operatives in 1942.</p>
-
-            <p><strong>Martin Bormann</strong> — Head of the Nazi Party Chancellery and Hitler's private secretary in the later years of the war. He controlled access to Hitler and wielded significant administrative power within the party.</p>
-
-            <p><strong>Albert Speer</strong> — Reich Minister of Armaments and War Production. He significantly increased Germany's wartime industrial output, making extensive use of forced labour drawn from concentration camps and occupied territories. He was later convicted at the Nuremberg Trials.</p>
+            <p>The Nazi state was dominated by a small group of senior officials. Click any card on the right panel to read an in-depth profile of each figure.</p>
+            <p><strong>Adolf Hitler</strong> — Dictator and NSDAP leader. <strong>Joseph Goebbels</strong> — Reich Minister of Propaganda. <strong>Heinrich Himmler</strong> — Head of the SS and architect of the Holocaust. <strong>Hermann Göring</strong> — Luftwaffe commander and economic planner. <strong>Rudolf Hess</strong> — Deputy Führer until 1941. <strong>Reinhard Heydrich</strong> — Organiser of the Final Solution. <strong>Martin Bormann</strong> — Party Chancellery head. <strong>Albert Speer</strong> — Minister of Armaments.</p>
 
             <h2>Concentration Camps</h2>
-
-            <p>Concentration camps were detention and imprisonment facilities established by the Nazi regime, initially to hold political opponents — including communists, trade unionists, and social democrats — following Hitler's assumption of power in 1933. The system was administered by the SS and expanded dramatically over time.</p>
-
-            <p>As the regime radicalised, the camps evolved from political detention centres into a vast network of forced labour sites and, ultimately, dedicated extermination facilities. Millions of Jewish people, Roma people, disabled individuals, Soviet prisoners of war, political prisoners, and others were imprisoned under conditions of deliberate overcrowding, starvation, forced labour, disease, and systematic killing.</p>
-
-            <p>Among the most significant were Dachau (the first established camp, opened in 1933), Auschwitz-Birkenau (the largest combined concentration and extermination camp, responsible for the deaths of over one million people, the majority Jewish), Bergen-Belsen, Treblinka, Sobibór, and dozens of others across Germany and occupied Europe.</p>
+            <p>Concentration camps were detention facilities established by the Nazi regime from 1933 onward, initially to hold political opponents, later expanding into a vast network of forced labour and extermination sites. The most significant included Dachau, Auschwitz-Birkenau, Bergen-Belsen, Treblinka, and Sobibór. Millions of Jewish people, Roma, disabled individuals, Soviet POWs, and political prisoners were imprisoned and killed in these facilities.</p>
 
             <h2>Kristallnacht (1938)</h2>
-
-            <p>Kristallnacht — "Night of Broken Glass" — took place on the nights of 9–10 November 1938. It was a coordinated wave of violent attacks against Jewish communities throughout Nazi Germany and Austria, organised by the Nazi party and carried out by the SS, Hitler Youth, and civilian participants.</p>
-
-            <p>During the pogrom, over 7,500 Jewish-owned businesses were destroyed, around 1,400 synagogues were damaged or burned, Jewish homes and community buildings were attacked, and approximately 30,000 Jewish men were arrested and sent to concentration camps. Around 100 people were killed in the violence, though the broader death toll was higher.</p>
-
-            <p>Kristallnacht represented a sharp escalation from discriminatory legislation toward open, organised physical violence against Jewish people, and is widely regarded as a turning point in the intensification of Nazi persecution leading toward the Holocaust.</p>
+            <p>On 9–10 November 1938, a state-organised pogrom swept Nazi Germany and Austria. Over 7,500 Jewish-owned businesses were destroyed, around 1,400 synagogues were burned, and approximately 30,000 Jewish men were arrested and sent to concentration camps. Kristallnacht marked a decisive escalation from discriminatory laws toward open, large-scale physical violence — a turning point on the path to the Holocaust.</p>
 
             <h2>The Gestapo</h2>
-
-            <p>The Gestapo (<em>Geheime Staatspolizei</em>, or Secret State Police) was established in 1933 and became the principal instrument of political repression within Nazi Germany. It was responsible for identifying, investigating, and suppressing all perceived opposition to the regime.</p>
-
-            <p>Unlike conventional police forces, the Gestapo operated outside normal judicial oversight and was authorised to detain, interrogate, and transfer individuals to concentration camps without trial. It made extensive use of informants within the civilian population, telephone surveillance, and coercive interrogation methods. Working closely with the SS, it played a central role in enforcing Nazi racial laws and eliminating political dissent both within Germany and in occupied territories.</p>
-
-            <p>The widespread fear of Gestapo surveillance — whether or not it was always present — was itself a powerful tool of social control, discouraging resistance and encouraging conformity across German society.</p>
+            <p>The Gestapo (<em>Geheime Staatspolizei</em>) was the Nazi secret state police, operating without judicial oversight. It used informants, surveillance, and torture to suppress all opposition, working closely with the SS to enforce racial laws and eliminate dissent across Germany and occupied territories.</p>
 
             <h2>Hitler Youth (Hitlerjugend)</h2>
-
-            <p>The Hitler Youth was a state-run youth organisation established to instil Nazi ideology in the younger generation. Membership became compulsory for boys aged 10 and above in 1936; a parallel organisation, the League of German Girls (<em>Bund Deutscher Mädel</em>), served the same function for girls.</p>
-
-            <p>The organisation combined physical education, paramilitary training, and ideological instruction, aiming to prepare boys for military service and girls for roles defined by the regime as appropriate for women within the "national community." Cultural activities, sports, and camping trips were also used as vehicles for ideological influence.</p>
-
-            <p>By the late 1930s, millions of young Germans were members. The Hitler Youth represented one of the regime's most systematic efforts to shape an entire generation's beliefs, values, and loyalties — ensuring that Nazi ideology was embedded at the earliest stages of life rather than only through adult political channels.</p>
+            <p>The Hitler Youth was a compulsory state youth organisation from 1936 that combined physical training, military preparation, and ideological indoctrination. A parallel organisation, the League of German Girls, served girls. By the late 1930s, millions of young Germans were members, representing one of the regime's most systematic efforts to shape an entire generation under Nazi ideology.</p>
 
         </div>
 
+        <!-- PERSON CONTENT (hidden by default) -->
+        <div class="content" id="person-content" style="display:none;"></div>
     </div>
 
     <!-- RIGHT PANEL -->
     <div class="right-panel">
-
-        <div class="leader-card">
+        <div class="leader-card" onclick="showPerson('hitler')">
             <img src="hitler.jpg" alt="Adolf Hitler">
             <div class="leader-name">Adolf Hitler</div>
         </div>
-
-        <div class="leader-card">
+        <div class="leader-card" onclick="showPerson('goebbels')">
             <img src="goebbels.jpg" alt="Joseph Goebbels">
             <div class="leader-name">Joseph Goebbels</div>
         </div>
-
-        <div class="leader-card">
+        <div class="leader-card" onclick="showPerson('goering')">
             <img src="goering.jpg" alt="Hermann Göring">
             <div class="leader-name">Hermann Göring</div>
         </div>
-
-        <div class="leader-card">
+        <div class="leader-card" onclick="showPerson('himmler')">
             <img src="himmler.jpg" alt="Heinrich Himmler">
             <div class="leader-name">Heinrich Himmler</div>
         </div>
-
-        <div class="leader-card">
+        <div class="leader-card" onclick="showPerson('hess')">
             <img src="hess.jpg" alt="Rudolf Hess">
             <div class="leader-name">Rudolf Hess</div>
         </div>
-
-        <div class="leader-card">
+        <div class="leader-card" onclick="showPerson('heydrich')">
             <img src="heydrich.jpg" alt="Reinhard Heydrich">
             <div class="leader-name">Reinhard Heydrich</div>
         </div>
-
-        <div class="leader-card">
+        <div class="leader-card" onclick="showPerson('bormann')">
             <img src="bormann.jpg" alt="Martin Bormann">
             <div class="leader-name">Martin Bormann</div>
         </div>
-
-        <div class="leader-card">
+        <div class="leader-card" onclick="showPerson('speer')">
             <img src="speer.jpg" alt="Albert Speer">
             <div class="leader-name">Albert Speer</div>
         </div>
-
     </div>
 
 </div>
 
+<script>
+const people = {
+    hitler: {
+        name: "Adolf Hitler",
+        img: "hitler.jpg",
+        born: "20 April 1889, Braunau am Inn, Austria-Hungary",
+        died: "30 April 1945, Berlin, Germany (suicide)",
+        role: "Führer and Reich Chancellor of Germany (1933–1945)",
+        content: `
+            <h2>Early Life</h2>
+            <p>Adolf Hitler was born on 20 April 1889 in Braunau am Inn, a small town on the border between Austria and Bavaria. His father, Alois Hitler, was a customs official; his mother, Klara Pölzl, was Alois's third wife and was deeply devoted to her son. Hitler was a mediocre student and failed twice to gain admission to the Vienna Academy of Fine Arts, harbouring ambitions of becoming a painter. Following his mother's death in 1907, he moved to Vienna, where he lived in poverty for several years, absorbing the pan-German nationalism and antisemitism prevalent in the city's political culture at the time.</p>
+            <p>When World War I broke out in 1914, Hitler — then living in Munich — volunteered for the Bavarian Army. He served as a runner on the Western Front, was wounded twice, and was awarded the Iron Cross First Class for bravery, a distinction rarely given to enlisted men. He was deeply shaken by Germany's defeat in 1918, an outcome he and many on the German right attributed to internal betrayal — the so-called "stab-in-the-back" myth — rather than military failure.</p>
+
+            <h2>Rise to Power</h2>
+            <p>After the war, Hitler became involved in Munich's right-wing political scene and joined the German Workers' Party in 1919, which he soon reshaped into the National Socialist German Workers' Party (NSDAP). He proved a gifted and magnetic public speaker, capable of channelling mass frustration and resentment into political energy. In November 1923, he led the failed Beer Hall Putsch, an attempt to seize power in Munich that ended in his arrest. During his subsequent prison sentence, he dictated <em>Mein Kampf</em> ("My Struggle"), laying out his ideology of racial nationalism, antisemitism, and German expansionism.</p>
+            <p>Released after less than a year, Hitler rebuilt the NSDAP through legal political means. The Great Depression after 1929 dramatically expanded the party's support: unemployment soared, confidence in the Weimar Republic collapsed, and millions turned to extremist parties. In the July 1932 elections, the Nazis became the largest party in the Reichstag. On 30 January 1933, President Paul von Hindenburg appointed Hitler as Chancellor of Germany. Within months, through the Reichstag Fire Decree and the Enabling Act, Hitler dismantled democratic institutions and established a one-party dictatorship.</p>
+
+            <h2>Dictatorship and World War II</h2>
+            <p>As Führer — a title he assumed following Hindenburg's death in 1934 — Hitler held absolute authority over the German state, military, and party. His regime rapidly pursued rearmament, territorial expansion, and the systematic persecution of Jews and other targeted groups. The Nuremberg Laws of 1935 stripped Jews of citizenship. By 1939, persecution had escalated to violence and forced emigration on a mass scale.</p>
+            <p>Hitler's foreign policy aimed at overturning the Treaty of Versailles and securing <em>Lebensraum</em> in Eastern Europe. He remilitarised the Rhineland (1936), annexed Austria (1938), and seized Czechoslovakia — initially through diplomatic pressure, then by force. On 1 September 1939, Germany invaded Poland, triggering World War II. By mid-1940, German forces had overrun France, the Low Countries, Denmark, and Norway. In June 1941, Hitler ordered the invasion of the Soviet Union — the largest military operation in history — which initially brought enormous German gains but ultimately proved catastrophic.</p>
+            <p>During the war, Hitler's regime implemented the Holocaust: the systematic, state-organised murder of six million Jewish people across Europe, alongside millions of Roma, disabled individuals, Soviet POWs, and political prisoners. Hitler was directly informed of and involved in decisions relating to this genocide, though the operational details were managed by Himmler, Heydrich, and others.</p>
+
+            <h2>Defeat and Death</h2>
+            <p>From late 1942 onward, the tide of the war turned decisively against Germany. Hitler's strategic decisions — including his refusal to permit retreats and his increasing micromanagement of military operations — contributed to a series of catastrophic defeats, most notably at Stalingrad (1942–43). By early 1945, Soviet forces were advancing on Berlin from the east while Allied forces closed in from the west. Hitler remained in Berlin, refusing to flee. On 30 April 1945, with the city under siege, he took his own life in the Führerbunker beneath the Reich Chancellery. Eva Braun, whom he had married the previous day, died alongside him.</p>
+            <p>Germany surrendered unconditionally on 8 May 1945. Hitler's leadership had resulted in the deaths of an estimated 70–85 million people worldwide — approximately 3% of the 1940 global population — and left much of Europe in ruins. He is universally regarded by historians as one of the most destructive figures in recorded history.</p>
+        `
+    },
+    goebbels: {
+        name: "Joseph Goebbels",
+        img: "goebbels.jpg",
+        born: "29 October 1897, Rheydt, German Empire",
+        died: "1 May 1945, Berlin, Germany (suicide)",
+        role: "Reich Minister of Propaganda (1933–1945)",
+        content: `
+            <h2>Early Life and Education</h2>
+            <p>Paul Joseph Goebbels was born on 29 October 1897 in Rheydt, a small industrial town in the Rhine province of Germany. Unlike many senior Nazi figures, Goebbels was highly educated: he studied literature, history, and philosophy at several universities, earning a doctorate from the University of Heidelberg in 1921. His thesis examined a 19th-century Romantic playwright. This academic background made him unusual in the Nazi leadership and contributed to his abilities as a writer, speaker, and propagandist.</p>
+            <p>In his early adult years, Goebbels harboured literary ambitions and wrote an autobiographical novel that was rejected by publishers. He also suffered from a congenital deformity of his right foot that required him to wear a brace, exempting him from military service in World War I and leaving him with a lifelong limp — something that made him acutely self-conscious in a movement that idolised physical strength.</p>
+
+            <h2>Rise Within the NSDAP</h2>
+            <p>Goebbels joined the Nazi Party in 1924 and initially aligned with the more socialist-leaning faction led by Gregor Strasser. After meeting Hitler in 1926, he switched his allegiance completely and became one of Hitler's most devoted followers. Hitler appointed him Gauleiter (regional party leader) of Berlin that year, where Goebbels proved extremely effective at organising rallies, provoking political opponents, and building the party's presence in a city that had been largely hostile to the Nazis.</p>
+            <p>He founded and edited the propaganda newspaper <em>Der Angriff</em> ("The Attack") and developed a sophisticated understanding of how to use media, symbolism, and spectacle to manipulate public opinion. His techniques drew on modern advertising and mass communication, applied to political ends with deliberate ruthlessness.</p>
+
+            <h2>Reich Minister of Propaganda</h2>
+            <p>When Hitler became Chancellor in 1933, Goebbels was appointed Reich Minister of Public Enlightenment and Propaganda — a new ministry created specifically for him. He immediately moved to bring all forms of public communication under state control: newspapers, radio, film, theatre, music, and the visual arts. The Reich Chamber of Culture, which he headed, required all artists, writers, journalists, and broadcasters to be members; those deemed racially or politically unacceptable were excluded from their professions.</p>
+            <p>Goebbels orchestrated the book burnings of May 1933, in which works by Jewish, communist, and other "un-German" authors were publicly destroyed. He understood radio as the most powerful mass medium of the era and ensured that cheap "people's receivers" (<em>Volksempfänger</em>) were widely distributed so that Nazi broadcasts could reach the entire population.</p>
+            <p>He was also closely involved in organising Kristallnacht in November 1938, using the assassination of a German diplomat in Paris by a young Jewish man as a pretext to unleash coordinated nationwide violence against Jewish communities.</p>
+
+            <h2>Wartime Role and Death</h2>
+            <p>As the war progressed and Germany's military fortunes declined, Goebbels became increasingly important as the regime's public face. Following the catastrophic defeat at Stalingrad in early 1943, he delivered his famous "Total War" speech at the Berlin Sportpalast, in which a carefully selected audience was asked whether they wanted total war — a piece of theatre designed to manufacture the appearance of popular will. He was appointed Reich Plenipotentiary for Total War in 1944, giving him sweeping powers over civilian life and the domestic war effort.</p>
+            <p>Goebbels remained loyal to Hitler until the very end. On 1 May 1945 — the day after Hitler's suicide — Goebbels and his wife Magda poisoned their six children and then took their own lives in the Reich Chancellery garden. His commitment to Nazi ideology was absolute: he regarded death preferable to living in a world without National Socialism.</p>
+        `
+    },
+    goering: {
+        name: "Hermann Göring",
+        img: "goering.jpg",
+        born: "12 January 1893, Rosenheim, Bavaria, German Empire",
+        died: "15 October 1946, Nuremberg, Germany (suicide)",
+        role: "Commander-in-Chief of the Luftwaffe; President of the Reichstag; Reich Marshal",
+        content: `
+            <h2>Early Life and World War I</h2>
+            <p>Hermann Wilhelm Göring was born on 12 January 1893 in Rosenheim, Bavaria. His father had been the first Governor-General of German South-West Africa. Göring trained as a military officer and served in the infantry at the start of World War I before transferring to the Imperial German Air Service, where he became a celebrated fighter ace, credited with 22 aerial victories. He commanded the famous Jagdgeschwader 1 — the squadron previously led by Manfred von Richthofen, the "Red Baron" — and was awarded the Pour le Mérite, Germany's highest military honour, in 1918.</p>
+            <p>After the war, Göring struggled to adjust to civilian life. He worked briefly as a commercial pilot in Scandinavia, where he met his first wife, the Swedish aristocrat Carin von Kantzow. He moved to Munich in the early 1920s and encountered the Nazi movement, becoming one of its earliest prominent supporters.</p>
+
+            <h2>Rise to Power</h2>
+            <p>Göring participated in the 1923 Beer Hall Putsch and was wounded in the groin. To manage the pain, he was treated with morphine, leading to an addiction that plagued him for much of his life. He fled to Austria and later Sweden following the putsch's failure. After an amnesty allowed his return to Germany, he was elected to the Reichstag as a Nazi deputy in 1928 and became Reichstag President in 1932 — a position of considerable constitutional importance.</p>
+            <p>After Hitler's appointment as Chancellor, Göring was named Minister of the Interior for Prussia and used this position to purge the Prussian police of political opponents and create the Gestapo, Germany's secret state police. He was one of the most powerful figures in the early Nazi regime and accumulated an extraordinary number of titles and offices throughout the 1930s.</p>
+
+            <h2>Luftwaffe and the War</h2>
+            <p>In 1935, Hitler officially revealed the existence of the new German Air Force — the Luftwaffe — in violation of the Treaty of Versailles, appointing Göring as its Commander-in-Chief. Göring oversaw the rapid expansion and modernisation of German air power, which played a central role in early German military successes through close air support of ground operations (<em>Blitzkrieg</em>). He was awarded the specially created rank of Reich Marshal (<em>Reichsmarschall</em>) in 1940 — the highest military rank in the Third Reich — following the Fall of France.</p>
+            <p>However, Göring's military reputation suffered serious damage during the Battle of Britain (1940), when his confident assurances that the Luftwaffe could defeat the Royal Air Force and force British submission proved wrong. Subsequent failures — including his promise to supply encircled German troops at Stalingrad by air, which the Luftwaffe could not fulfil — further eroded his standing with Hitler. By the final years of the war, Göring had largely withdrawn from active involvement, retreating to his vast estate Carinhall (named after his deceased first wife), where he indulged his appetite for art — much of it looted from occupied countries and persecuted Jewish families.</p>
+
+            <h2>Nuremberg Trials and Death</h2>
+            <p>Göring was captured by American forces in May 1945 and stood trial at the Nuremberg International Military Tribunal, where he was charged with conspiracy to wage aggressive war, crimes against peace, war crimes, and crimes against humanity. He proved to be the most formidable defendant at the trial — sharp, articulate, and combative in cross-examination — and was regarded by observers as the most intellectually capable of the accused. He was found guilty on all four counts and sentenced to death by hanging. On 15 October 1946 — hours before his scheduled execution — he took a cyanide capsule he had concealed, dying by suicide.</p>
+        `
+    },
+    himmler: {
+        name: "Heinrich Himmler",
+        img: "himmler.jpg",
+        born: "7 October 1900, Munich, Bavaria, German Empire",
+        died: "23 May 1945, Lüneburg, Germany (suicide)",
+        role: "Reichsführer-SS; Chief of German Police; Reich Minister of the Interior",
+        content: `
+            <h2>Early Life</h2>
+            <p>Heinrich Luitpold Himmler was born on 7 October 1900 in Munich, the son of a secondary school teacher and devout Catholic. He was an unremarkable student but was deeply interested in German history, mythology, and the occult from an early age. He served briefly as an officer cadet near the end of World War I but saw no combat. After the war, he studied agronomy at the Munich Technical University, developing an interest in farming and racial theories that would later influence his ideology.</p>
+            <p>Himmler joined the Nazi Party in 1923 and participated in the Beer Hall Putsch as a flag bearer. He appeared outwardly ordinary — bespectacled, bureaucratic, and soft-spoken — a contrast to the monstrous scale of the crimes he would oversee. This unremarkable exterior concealed an extreme and systematic ideological commitment to racial purity and extermination.</p>
+
+            <h2>Building the SS</h2>
+            <p>In 1929, Hitler appointed Himmler Reichsführer-SS (head of the SS), at that time a small personal bodyguard unit. Himmler transformed it over the following decade into a massive, powerful organisation encompassing the secret police (Gestapo), the Waffen-SS (combat troops), the Death's Head units that ran the concentration camps, and the SD (security and intelligence service). The SS operated as a state within the state, answerable only to Hitler.</p>
+            <p>Himmler pursued an obsessive vision of racial purity within the SS, establishing the <em>Lebensborn</em> programme (designed to increase the birthrate of "racially valuable" children), and developing plans — many never implemented — for a vast post-war racial reorganisation of Eastern Europe. He was fascinated by Norse mythology, the occult, and pseudo-historical theories about Aryan origins, and funded research into these areas through the SS's Ahnenerbe ("Ancestral Heritage") institute.</p>
+
+            <h2>Architect of the Holocaust</h2>
+            <p>Himmler bore primary operational responsibility for the Holocaust. He oversaw the construction and operation of the concentration and extermination camp system, the organisation of the <em>Einsatzgruppen</em> (mobile killing units that murdered over one million Jews and others in the Soviet Union from 1941), and the implementation of the "Final Solution" following the Wannsee Conference of January 1942. He personally inspected camps and killing operations on multiple occasions.</p>
+            <p>The scale of murder carried out under Himmler's authority was staggering: approximately six million Jews, alongside hundreds of thousands of Roma, disabled people, Soviet POWs, political prisoners, and others. He managed this genocide with bureaucratic efficiency, treating mass murder as an administrative challenge to be optimised.</p>
+
+            <h2>Final Days and Death</h2>
+            <p>As Germany's military position collapsed in early 1945, Himmler made secret, unauthorised attempts to negotiate a separate peace with the Western Allies — a betrayal that enraged Hitler when he discovered it. Himmler was stripped of all his offices in April 1945. He attempted to flee disguised as a regular soldier but was captured by British forces on 22 May 1945. Before he could be interrogated, he bit down on a cyanide capsule and died on 23 May 1945.</p>
+        `
+    },
+    hess: {
+        name: "Rudolf Hess",
+        img: "hess.jpg",
+        born: "26 April 1894, Alexandria, Egypt (then British protectorate)",
+        died: "17 August 1987, West Berlin, Germany (suicide)",
+        role: "Deputy Führer of the NSDAP (1933–1941)",
+        content: `
+            <h2>Early Life and World War I</h2>
+            <p>Rudolf Walter Richard Hess was born on 26 April 1894 in Alexandria, Egypt, where his father was a prosperous German merchant. He was educated partly in Germany and was serving as a young infantry officer when World War I broke out. He fought on the Western Front, was wounded multiple times, and later transferred to the Imperial German Air Service, qualifying as a pilot in 1918, though the war ended before he saw aerial combat.</p>
+            <p>Like many young German veterans, Hess was bitterly disillusioned by Germany's defeat and drawn to nationalist and völkisch political movements in the turbulent postwar years. He enrolled at the University of Munich, where he was taught by the geopolitician Karl Haushofer, whose concept of <em>Lebensraum</em> (living space) would later heavily influence Nazi ideology.</p>
+
+            <h2>Devoted Follower of Hitler</h2>
+            <p>Hess encountered Adolf Hitler in 1920 and became one of his earliest and most personally devoted followers — part of the inner circle from the very beginning. He participated in the November 1923 Beer Hall Putsch and was subsequently imprisoned alongside Hitler in Landsberg Prison. During their imprisonment, Hess served as Hitler's secretary and took dictation for much of <em>Mein Kampf</em>, also helping to shape its ideas through discussions with Hitler. Haushofer's geopolitical theories, which Hess had introduced to Hitler, are clearly visible in the book's treatment of <em>Lebensraum</em>.</p>
+            <p>After the Nazi seizure of power in 1933, Hess was appointed Deputy Führer — formally the third-ranking figure in the Nazi hierarchy after Hitler and Göring. He played a significant role in early party organisation and was involved in drafting the Nuremberg Laws of 1935, which stripped Jews of German citizenship. However, as the Nazi state became more complex, real administrative power shifted to others — particularly Bormann, who managed Hess's office — and Hess became increasingly marginalised within the leadership.</p>
+
+            <h2>The Flight to Scotland</h2>
+            <p>On 10 May 1941 — the night of one of the heaviest German bombing raids on London — Hess made one of the most bizarre individual acts of World War II. He flew solo in a Messerschmitt Bf 110 from Augsburg to Scotland, parachuting near the estate of the Duke of Hamilton, whom he believed had pro-peace sympathies. His apparent intention was to negotiate a peace settlement between Germany and Britain, arguing that this would allow Germany to pursue its war in the East without a two-front conflict.</p>
+            <p>He was immediately captured. The British government, after initially considering how to exploit the propaganda opportunity, ultimately imprisoned him. Hitler, genuinely caught off guard, declared Hess mentally ill to distance the regime from the embarrassment. Hess spent the remainder of the war as a prisoner in Britain.</p>
+
+            <h2>Nuremberg and Imprisonment</h2>
+            <p>After the war, Hess was tried at the Nuremberg International Military Tribunal. He was found guilty of conspiracy to wage aggressive war and crimes against peace, but acquitted of war crimes and crimes against humanity on the grounds that his active involvement had ended with his flight in 1941. He was sentenced to life imprisonment and transferred to Spandau Prison in Berlin, where he would remain for the rest of his life — eventually, from 1966, as its sole prisoner.</p>
+            <p>Hess died on 17 August 1987, aged 93, in what was officially ruled a suicide by ligature strangulation. He had been the last surviving member of the senior Nazi leadership. Some conspiracy theories dispute the official verdict, though no credible evidence of foul play has been established. He had served 46 years in prison.</p>
+        `
+    },
+    heydrich: {
+        name: "Reinhard Heydrich",
+        img: "heydrich.jpg",
+        born: "7 March 1904, Halle an der Saale, German Empire",
+        died: "4 June 1942, Prague, Protectorate of Bohemia and Moravia (assassination)",
+        role: "Head of the RSHA; Reich Protector of Bohemia and Moravia; Chair of the Wannsee Conference",
+        content: `
+            <h2>Early Life</h2>
+            <p>Reinhard Tristan Eugen Heydrich was born on 7 March 1904 in Halle an der Saale, the son of a musician and opera singer. He was a talented violinist and musician in his youth, and also excelled at fencing. He joined the German Navy in 1922 and rose to the rank of lieutenant, but was dishonourably discharged in 1931 by a naval honour court for conduct unbecoming an officer — relating to a broken engagement with a young woman whose father had connections to naval command.</p>
+            <p>Shortly after his dismissal, Heydrich joined the Nazi Party and the SS. He impressed Himmler at his first meeting — fabricating expertise in intelligence work he did not actually have — and Himmler appointed him to build the SS's intelligence service. He proved extraordinarily capable and rose rapidly.</p>
+
+            <h2>Building the Security Apparatus</h2>
+            <p>Heydrich became head of the SD (Sicherheitsdienst), the SS intelligence and security service, and then chief of the Gestapo and the Kripo (criminal police). In 1939, these were consolidated into the Reich Main Security Office (RSHA), which Heydrich headed — giving him control over the entire Nazi security, intelligence, and police apparatus. This made him one of the most powerful and feared men in the Third Reich, even by other senior Nazis.</p>
+            <p>He was known within the regime as "the Blond Beast" and "the Hangman." His intelligence operations extended throughout occupied Europe, and he used the information gathered to exert leverage over rivals and enemies alike. He was reportedly feared even by Himmler, his nominal superior.</p>
+
+            <h2>The Holocaust and the Wannsee Conference</h2>
+            <p>Heydrich was one of the central operational architects of the Holocaust. He organised the <em>Einsatzgruppen</em> — mobile SS killing units — that followed the German armies into the Soviet Union in 1941 and murdered over a million Jews and others in mass shootings. In July 1941, Göring formally tasked him with preparing the "Final Solution to the Jewish Question."</p>
+            <p>On 20 January 1942, Heydrich chaired the Wannsee Conference in a villa on Lake Wannsee in Berlin — a meeting of senior Nazi officials at which the systematic murder of all European Jews was coordinated and bureaucratised. The conference lasted approximately ninety minutes. Its minutes, drawn up by Adolf Eichmann, survive as one of the most chilling documents of the Holocaust.</p>
+
+            <h2>Assassination</h2>
+            <p>In September 1941, Hitler appointed Heydrich Acting Reich Protector of Bohemia and Moravia (the occupied Czech lands), where he brutally suppressed resistance while also using economic incentives — earning him the nickname "the Butcher of Prague" among Czechs. The British Special Operations Executive, working with the Czechoslovak government-in-exile, trained two paratroopers — Jozef Gabčík and Jan Kubiš — for an assassination mission codenamed Operation Anthropoid.</p>
+            <p>On 27 May 1942, the two men ambushed Heydrich's open-topped car in Prague. Gabčík's submachine gun jammed; Kubiš threw a modified anti-tank grenade that exploded beneath the car. Heydrich was seriously wounded by shrapnel and horsehair from the car's upholstery. He died of his injuries on 4 June 1942, becoming the highest-ranking Nazi official to be assassinated during the war.</p>
+            <p>The Nazi reprisals were savage: the village of Lidice was entirely destroyed — all men and boys shot, women sent to concentration camps, children gassed — as collective punishment. The two assassins and their comrades were eventually cornered in a Prague church and died in the resulting battle. Heydrich was given a state funeral in Berlin and was posthumously mythologised within the Nazi movement.</p>
+        `
+    },
+    bormann: {
+        name: "Martin Bormann",
+        img: "bormann.jpg",
+        born: "17 June 1900, Halberstadt, German Empire",
+        died: "2 May 1945, Berlin, Germany (confirmed by DNA in 1998)",
+        role: "Head of the Party Chancellery; Private Secretary to Hitler",
+        content: `
+            <h2>Early Life</h2>
+            <p>Martin Ludwig Bormann was born on 17 June 1900 in Halberstadt, Saxony, the son of a postal worker and former regimental trumpeter. He served briefly in an artillery regiment in the final months of World War I but saw no combat. After the war, he worked as an estate manager in Mecklenburg and became involved in the violent right-wing nationalist <em>Freikorps</em> movement. In 1924, he was convicted and imprisoned for his role as an accessory in the murder of a man accused of betraying a nationalist conspirator — a killing carried out by his close friend Rudolf Höss, who would later become commandant of Auschwitz.</p>
+
+            <h2>Rise Within the Party</h2>
+            <p>Bormann joined the NSDAP in 1927 and the SS in 1937. He worked his way up through party administration with extraordinary diligence and organisational ability. In 1933, he became chief of staff to Rudolf Hess, the Deputy Führer, and used this position to make himself indispensable to the smooth running of the party's administrative apparatus.</p>
+            <p>After Hess's flight to Scotland in May 1941, Bormann was appointed head of the newly created Party Chancellery — effectively absorbing Hess's administrative role and expanding it. He also became Hitler's private secretary. These two positions, combined with his constant physical proximity to Hitler, gave Bormann enormous behind-the-scenes power that many underestimated precisely because he cultivated the appearance of a mere administrator.</p>
+
+            <h2>The "Brown Eminence"</h2>
+            <p>Bormann controlled who had access to Hitler, which documents reached him, and which of Hitler's decisions were transmitted to the broader government. He used this gatekeeping role to sideline rivals and ensure his own influence over policy. He was deeply distrusted and disliked by virtually every other senior Nazi figure — including Göring, Goebbels, and Himmler — but his proximity to Hitler made him effectively untouchable.</p>
+            <p>He was strongly anticlerical and pushed for increasingly harsh measures against the Christian churches, which he viewed as incompatible with Nazi ideology. He accumulated enormous personal wealth during the regime, managing Hitler's finances and the funds that flowed to Hitler from the "Adolf Hitler Endowment Fund of German Industry."</p>
+
+            <h2>Final Days and Fate</h2>
+            <p>Bormann remained in the Führerbunker until the very end, witnessing Hitler's marriage to Eva Braun and serving as a witness to Hitler's will. After Hitler's suicide on 30 April 1945, Bormann attempted to escape from the bunker during the night of 1–2 May 1945. He was seen by multiple witnesses near the Weidendammer Bridge but then disappeared.</p>
+            <p>For decades, his fate was uncertain, and he was tried and convicted in absentia at the Nuremberg Trials. Conspiracy theories suggested he had escaped to South America. In 1972, a skeleton was found in Berlin near where he was last seen; in 1998, DNA analysis confirmed it was Bormann's remains. He had died on 2 May 1945, most likely by suicide using a cyanide capsule as Soviet forces closed in.</p>
+        `
+    },
+    speer: {
+        name: "Albert Speer",
+        img: "speer.jpg",
+        born: "19 March 1905, Mannheim, German Empire",
+        died: "1 September 1981, London, United Kingdom (natural causes)",
+        role: "Reich Minister of Armaments and War Production (1942–1945); First Architect of the Third Reich",
+        content: `
+            <h2>Early Life and Architecture</h2>
+            <p>Berthold Konrad Hermann Albert Speer was born on 19 March 1905 in Mannheim, into an upper-middle-class family; his father and grandfather were both architects. He studied architecture at the Karlsruhe Institute of Technology, the Munich Technical University, and the Berlin Technical University, where he was taught by Heinrich Tessenow, whose restrained classicism influenced Speer's own aesthetic sensibility.</p>
+            <p>Speer attended a Nazi rally in Berlin in December 1930, initially out of curiosity, and was unexpectedly captivated by Hitler's speech. He joined the Nazi Party in January 1931. His professional opportunity came early: in 1933, the Nazi Party was in urgent need of architects for its rapidly expanding programme of rallies and events, and Speer was commissioned to renovate the Berlin headquarters. His work impressed the new regime and brought him directly to Hitler's attention.</p>
+
+            <h2>Hitler's Architect</h2>
+            <p>Speer and Hitler discovered a shared passion for monumental architecture and urban planning. Hitler harboured unfulfilled architectural ambitions of his own, and Speer became in some ways the instrument through which Hitler could realise his aesthetic visions. Their relationship was unusually warm for Hitler, who found in Speer an educated, cultivated companion with whom he could discuss art and design.</p>
+            <p>Speer designed the Zeppelin Field grandstand at Nuremberg, including the iconic "cathedral of light" effect using 130 anti-aircraft searchlights pointed skyward, which became one of the most memorable visual spectacles of the Nazi era. He was appointed General Building Inspector for the Reich Capital in 1937, given sweeping powers to demolish and redesign central Berlin into a new capital to be called "Germania" — a megalomaniacal scheme for a city of vast boulevards, a great hall that would have been the largest enclosed building in the world, and a triumphal arch that would have dwarfed the Arc de Triomphe. The war prevented most of this from being built beyond the planning stage.</p>
+
+            <h2>Minister of Armaments</h2>
+            <p>Following the death of Fritz Todt in a plane crash in February 1942, Hitler appointed Speer as Reich Minister of Armaments and War Production. Speer applied his organisational talents with remarkable effectiveness, rationalising German industrial production and dramatically increasing output even as Allied bombing intensified. Between 1942 and 1944, German arms production tripled — a remarkable achievement given the circumstances, though ultimately insufficient to overcome the enormous productive capacity of the Allied powers.</p>
+            <p>This industrial expansion relied heavily on forced labour — millions of workers from occupied countries and concentration camps, working under brutal conditions in which many died. Speer later claimed ignorance of the full extent of these conditions, but documentary evidence established that he was directly involved in requesting and managing this labour force, including visits to Mauthausen concentration camp.</p>
+
+            <h2>Nuremberg and Later Life</h2>
+            <p>In the final months of the war, Speer claimed to have worked to sabotage Hitler's "Nero Decree" — the order to destroy all German infrastructure to prevent it falling into Allied hands — believing this would be catastrophic for post-war German recovery. At Nuremberg, Speer carefully cultivated the image of a "good Nazi" — a technocrat who served the regime efficiently but claimed to have been unaware of the Holocaust and to have opposed Hitler's most destructive final orders. This self-presentation was only partially accepted by the tribunal: he was convicted of war crimes and crimes against humanity (specifically the use of forced labour) but acquitted of crimes against peace and conspiracy.</p>
+            <p>He was sentenced to 20 years in Spandau Prison, serving the full term. After his release in 1966, he wrote two widely read memoirs — <em>Inside the Third Reich</em> (1969) and <em>Spandau: The Secret Diaries</em> (1975) — which shaped popular understanding of the Nazi regime for a generation. Historians have subsequently been deeply critical of the self-serving "good Nazi" narrative he constructed, with considerable evidence that his claimed ignorance of the Holocaust was false. He died of a stroke in London on 1 September 1981, aged 76.</p>
+        `
+    }
+};
+
+function showHome() {
+    document.getElementById('home-content').style.display = '';
+    document.getElementById('person-content').style.display = 'none';
+}
+
+function showPerson(key) {
+    const p = people[key];
+    if (!p) return;
+
+    const pc = document.getElementById('person-content');
+    pc.innerHTML = `
+        <div class="person-layout">
+            <div class="person-img-col">
+                <img src="${p.img}" alt="${p.name}">
+                <div class="person-img-caption"><strong>${p.name}</strong></div>
+                <div class="person-img-caption" style="margin-top:8px;text-align:left;">
+                    <strong>Born:</strong> ${p.born}<br>
+                    <strong>Died:</strong> ${p.died}<br>
+                    <strong>Role:</strong> ${p.role}
+                </div>
+            </div>
+            <div class="person-text-col">
+                <h2 style="margin-top:0;">${p.name}</h2>
+                ${p.content}
+            </div>
+        </div>
+    `;
+    document.getElementById('home-content').style.display = 'none';
+    pc.style.display = '';
+    pc.scrollTop = 0;
+}
+</script>
 </body>
 </html>
