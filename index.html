@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Eight 8</title>
+
+<link rel="icon" href="./favicon.ico" sizes="any">
+<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="./favicon.ico">
+
+<style>
+body{
+    margin:0;
+    background:#d0d0d0;
+    font-family:Verdana,Arial,sans-serif;
+    color:#111;
+    overflow:hidden;
+}
+
+/* HEADER */
+.header{
+    width:100%;
+    height:100px;
+    border-bottom:2px solid #888;
+}
+
+.header img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* MAIN */
+.main{
+    display:flex;
+    justify-content:center;
+    padding:10px;
+    height:calc(100vh - 120px);
+}
+
+/* BOARD */
+.board{
+    width:min(900px,90vw);
+    background:#f0f0f0;
+    border:1px solid #aaa;
+    padding:10px;
+    display:flex;
+    flex-direction:column;
+    box-sizing:border-box;
+}
+
+/* TOP */
+.top{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-bottom:1px solid #bbb;
+    padding-bottom:8px;
+    margin-bottom:10px;
+}
+
+.title{
+    font-size:24px;
+    color:#222;
+    font-weight:bold;
+    text-align:center;
+}
+
+.subtitle{
+    text-align:center;
+    color:#555;
+    font-size:11px;
+    margin-bottom:10px;
+}
+
+/* CONTENT */
+.content{
+    background:#fff;
+    border:1px solid #ccc;
+    padding:15px;
+    overflow-y:auto;
+    flex-grow:1;
+    line-height:1.7;
+    font-size:13px;
+    box-sizing:border-box;
+}
+
+/* Subheadings inside content */
+.content h2 {
+    font-size:14px;
+    font-weight:bold;
+    color:#111;
+    margin-top:20px;
+    margin-bottom:6px;
+    border-bottom:1px solid #ddd;
+    padding-bottom:4px;
+}
+
+.content p {
+    margin:0 0 12px 0;
+}
+
+a{
+    color:#333;
+    text-decoration:underline;
+}
+
+a:visited{
+    color:#555;
+}
+
+/* RIGHT PANEL */
+.right-panel{
+    width:340px;
+    margin-left:10px;
+    background:#f0f0f0;
+    border:1px solid #aaa;
+    padding:10px;
+    box-sizing:border-box;
+
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    align-content:flex-start;
+
+    overflow-y:auto;
+}
+
+/* 3 PER ROW */
+.leader-card{
+    width:calc(33.333% - 7px);
+    background:#fff;
+    border:1px solid #ccc;
+    padding:6px;
+    text-align:center;
+    box-sizing:border-box;
+}
+
+/* IMAGE */
+.leader-card img{
+    width:100%;
+    height:90px;
+    object-fit:cover;
+    border:1px solid #ccc;
+}
+
+/* NAME */
+.leader-name{
+    margin-top:5px;
+    font-size:11px;
+    font-weight:bold;
+    color:#222;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <img src="header.png" alt="Header">
+</div>
+
+<div class="main">
+
+    <!-- LEFT BOARD -->
+    <div class="board">
+
+        <div class="top">
+            <div class="title">Eight 8 — hallow35</div>
+        </div>
+
+        <div class="subtitle">
+            National Socialism &bull; Historical Information &bull; Documentation
+        </div>
+
+        <div class="content">
+
+            <h2>National Socialist Party Ideology</h2>
+
+            <p>Nazi ideology, as developed by the National Socialist German Workers' Party (NSDAP) under Adolf Hitler during the 1920s and 1930s, presented itself as a total worldview — a complete explanation of politics, history, race, and national destiny. Understanding this ideology is essential for comprehending one of the most catastrophic periods in modern history and for recognising the warning signs of political extremism.</p>
+
+            <p>At the core of Nazi ideology was a pseudoscientific theory of racial hierarchy. The Nazis falsely claimed that humanity was divided into biologically distinct "races" of differing worth, placing so-called "Aryans" — broadly defined as Northern and Western Europeans — at the top. This had no basis in science, but was used to justify discrimination and persecution. Jewish people were particularly targeted: falsely portrayed not as a religious group but as a separate "race" that the Nazis claimed was responsible for Germany's defeat in World War I, economic instability, and broader social decline. These claims were fabrications used to scapegoat an entire community. Other groups — including Roma people, disabled individuals, Slavic peoples, Black Germans, and political opponents — were also dehumanised and persecuted under the same framework.</p>
+
+            <p>Nazi supporters were taught that history was a perpetual biological struggle between races, rather than a contest of ideas or nations. This framing was used to justify violent conflict as inevitable and even necessary. It removed the moral basis for peace, diplomacy, or cooperation across national lines.</p>
+
+            <p>A further central concept was <em>Lebensraum</em> ("living space"). The Nazis argued that Germany needed to expand its territory — particularly eastward into Eastern Europe and the Soviet Union — to secure land and resources. This was framed as a matter of national survival rather than conquest. In practice, it provided the ideological justification for aggressive military invasions, the mass displacement of civilian populations, and widespread atrocities across occupied territories during World War II.</p>
+
+            <p>The ideology also rejected liberal democracy, parliamentary government, and left-wing politics. Democracy was portrayed as weak and ineffective. The Nazi alternative was a system of total authority centred on the <em>Führerprinzip</em> — the idea that a single leader, Adolf Hitler, embodied the will of the nation and held absolute power. This structure dismantled existing legal and democratic institutions, concentrating control in the hands of the party.</p>
+
+            <p>Socially and economically, the Nazis promoted the concept of the <em>Volksgemeinschaft</em> ("national community") — a racially defined collective to which individual rights were subordinated. In theory this promised national unity; in practice it was enforced through exclusion, repression, and violence against those deemed to be outside the community.</p>
+
+            <p>These ideas were spread and reinforced through state control of the press, radio, film, education, and public events such as mass rallies. The ideology was presented as offering national renewal after Germany's defeat in World War I and the economic hardship of the 1920s, making it attractive to many who felt humiliated or left behind — despite the destructive reality it produced.</p>
+
+            <p>In practice, Nazi ideology led directly to the Holocaust — the systematic, state-organised murder of six million Jewish men, women, and children, alongside millions of others including Roma people, disabled individuals, political prisoners, and Soviet POWs. It triggered World War II in Europe, resulting in tens of millions of deaths and destruction on a vast scale. After Germany's defeat in 1945 and the full revelation of these crimes, Nazi ideology was condemned internationally and recognised as one of the most extreme examples of state-sponsored genocidal violence in recorded history.</p>
+
+            <h2>Key Figures in the Nazi Leadership</h2>
+
+            <p>The Nazi state was dominated by a small group of senior officials who shared responsibility for its policies and crimes:</p>
+
+            <p><strong>Adolf Hitler</strong> — Founder and leader of the NSDAP, and dictator of Nazi Germany from 1933 until his death in 1945. He held ultimate authority over the state, military, and all major policy decisions, including those relating to racial persecution and warfare.</p>
+
+            <p><strong>Joseph Goebbels</strong> — Reich Minister of Propaganda. He oversaw the control of German media, film, radio, and public events, shaping public perception of the regime and spreading Nazi ideology throughout German society.</p>
+
+            <p><strong>Heinrich Himmler</strong> — Head of the SS (Schutzstaffel) and one of the chief architects of the concentration camp system. He played a central role in planning and implementing the Holocaust.</p>
+
+            <p><strong>Hermann Göring</strong> — One of the most senior figures in the Nazi hierarchy, commander of the Luftwaffe (German Air Force), and head of economic planning for wartime industrial production. He was also involved in the early establishment of the Gestapo.</p>
+
+            <p><strong>Rudolf Hess</strong> — Deputy Führer until 1941. He was closely involved in early party organisation and co-authored sections of <em>Mein Kampf</em> with Hitler. In 1941, he flew alone to Scotland in an unofficial attempt to negotiate peace with Britain, after which he was imprisoned for the remainder of the war.</p>
+
+            <p><strong>Reinhard Heydrich</strong> — Senior SS and police official who chaired the 1942 Wannsee Conference, at which Nazi officials coordinated the planning of the "Final Solution" — the systematic murder of European Jews. He was assassinated by Czech resistance operatives in 1942.</p>
+
+            <p><strong>Martin Bormann</strong> — Head of the Nazi Party Chancellery and Hitler's private secretary in the later years of the war. He controlled access to Hitler and wielded significant administrative power within the party.</p>
+
+            <p><strong>Albert Speer</strong> — Reich Minister of Armaments and War Production. He significantly increased Germany's wartime industrial output, making extensive use of forced labour drawn from concentration camps and occupied territories. He was later convicted at the Nuremberg Trials.</p>
+
+            <h2>Concentration Camps</h2>
+
+            <p>Concentration camps were detention and imprisonment facilities established by the Nazi regime, initially to hold political opponents — including communists, trade unionists, and social democrats — following Hitler's assumption of power in 1933. The system was administered by the SS and expanded dramatically over time.</p>
+
+            <p>As the regime radicalised, the camps evolved from political detention centres into a vast network of forced labour sites and, ultimately, dedicated extermination facilities. Millions of Jewish people, Roma people, disabled individuals, Soviet prisoners of war, political prisoners, and others were imprisoned under conditions of deliberate overcrowding, starvation, forced labour, disease, and systematic killing.</p>
+
+            <p>Among the most significant were Dachau (the first established camp, opened in 1933), Auschwitz-Birkenau (the largest combined concentration and extermination camp, responsible for the deaths of over one million people, the majority Jewish), Bergen-Belsen, Treblinka, Sobibór, and dozens of others across Germany and occupied Europe.</p>
+
+            <h2>Kristallnacht (1938)</h2>
+
+            <p>Kristallnacht — "Night of Broken Glass" — took place on the nights of 9–10 November 1938. It was a coordinated wave of violent attacks against Jewish communities throughout Nazi Germany and Austria, organised by the Nazi party and carried out by the SS, Hitler Youth, and civilian participants.</p>
+
+            <p>During the pogrom, over 7,500 Jewish-owned businesses were destroyed, around 1,400 synagogues were damaged or burned, Jewish homes and community buildings were attacked, and approximately 30,000 Jewish men were arrested and sent to concentration camps. Around 100 people were killed in the violence, though the broader death toll was higher.</p>
+
+            <p>Kristallnacht represented a sharp escalation from discriminatory legislation toward open, organised physical violence against Jewish people, and is widely regarded as a turning point in the intensification of Nazi persecution leading toward the Holocaust.</p>
+
+            <h2>The Gestapo</h2>
+
+            <p>The Gestapo (<em>Geheime Staatspolizei</em>, or Secret State Police) was established in 1933 and became the principal instrument of political repression within Nazi Germany. It was responsible for identifying, investigating, and suppressing all perceived opposition to the regime.</p>
+
+            <p>Unlike conventional police forces, the Gestapo operated outside normal judicial oversight and was authorised to detain, interrogate, and transfer individuals to concentration camps without trial. It made extensive use of informants within the civilian population, telephone surveillance, and coercive interrogation methods. Working closely with the SS, it played a central role in enforcing Nazi racial laws and eliminating political dissent both within Germany and in occupied territories.</p>
+
+            <p>The widespread fear of Gestapo surveillance — whether or not it was always present — was itself a powerful tool of social control, discouraging resistance and encouraging conformity across German society.</p>
+
+            <h2>Hitler Youth (Hitlerjugend)</h2>
+
+            <p>The Hitler Youth was a state-run youth organisation established to instil Nazi ideology in the younger generation. Membership became compulsory for boys aged 10 and above in 1936; a parallel organisation, the League of German Girls (<em>Bund Deutscher Mädel</em>), served the same function for girls.</p>
+
+            <p>The organisation combined physical education, paramilitary training, and ideological instruction, aiming to prepare boys for military service and girls for roles defined by the regime as appropriate for women within the "national community." Cultural activities, sports, and camping trips were also used as vehicles for ideological influence.</p>
+
+            <p>By the late 1930s, millions of young Germans were members. The Hitler Youth represented one of the regime's most systematic efforts to shape an entire generation's beliefs, values, and loyalties — ensuring that Nazi ideology was embedded at the earliest stages of life rather than only through adult political channels.</p>
+
+        </div>
+
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="right-panel">
+
+        <div class="leader-card">
+            <img src="hitler.jpg" alt="Adolf Hitler">
+            <div class="leader-name">Adolf Hitler</div>
+        </div>
+
+        <div class="leader-card">
+            <img src="goebbels.jpg" alt="Joseph Goebbels">
+            <div class="leader-name">Joseph Goebbels</div>
+        </div>
+
+        <div class="leader-card">
+            <img src="goering.jpg" alt="Hermann Göring">
+            <div class="leader-name">Hermann Göring</div>
+        </div>
+
+        <div class="leader-card">
+            <img src="himmler.jpg" alt="Heinrich Himmler">
+            <div class="leader-name">Heinrich Himmler</div>
+        </div>
+
+        <div class="leader-card">
+            <img src="hess.jpg" alt="Rudolf Hess">
+            <div class="leader-name">Rudolf Hess</div>
+        </div>
+
+        <div class="leader-card">
+            <img src="heydrich.jpg" alt="Reinhard Heydrich">
+            <div class="leader-name">Reinhard Heydrich</div>
+        </div>
+
+        <div class="leader-card">
+            <img src="bormann.jpg" alt="Martin Bormann">
+            <div class="leader-name">Martin Bormann</div>
+        </div>
+
+        <div class="leader-card">
+            <img src="speer.jpg" alt="Albert Speer">
+            <div class="leader-name">Albert Speer</div>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
